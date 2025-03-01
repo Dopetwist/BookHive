@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Book Notes | Jonathan Afugwobi</title>
+        <link rel="stylesheet" href="/styles/style.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+
+        <div class="main">
+            <div class="container">
+                <div class="head">
+                    <div class="head-texts">
+                        <a href="/"><h1> Jonathan Afugwobi </h1></a>
+        
+                        <h2> Books i've read. </h2>
+                    </div>
+        
+                    <div class="toggle">
+                        <p class="themeToggle">Change Theme</p><i class='bx bx-toggle-left' id="toggle-button"></i>
+                    </div>
+        
+                    <button id="back-to-top"><i class='bx bx-up-arrow-alt'></i></button>
+                </div>
+
+                <form action="/add" method="POST">
+                    <button type="submit" class="add-button" id="add-book">Add New Book</button>
+                </form>
+
+                <div class="imgs">
+                    <img src="/images/writers-scene-concept.jpg" alt="Man Reading Book" class="man">
+                    <img src="/images/Books.jpg" alt="Books" class="books">
+                </div>
+    
+                <p class="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Numquam excepturi obcaecati autem aut, inventore officia beatae magnam culpa repellendus eaque 
+                    laboriosam odit, tenetur nulla quisquam, optio fuga. Vero rerum labore aut totam est. Iusto, 
+                    quas quis reprehenderit beatae aut dolore?
+                </p>
+    
+                <p class="sort"> <strong class="sort-by">Sort By:</strong> <a href="/sort-title" class="yellow">Title</a>, <a href="/sort-recent" class="yellow">Most Recent</a> and 
+                    <a href="/sort-rating" class="yellow">Rating</a> </p>
+                    
+                    <!-- Display any error that occured -->
+                <% if (locals.error) { %> 
+                    <p class="error"> <%= error %> </p>
+                <% } %> 
+    
+                <!-- Loop through each book -->
+                <% if (locals.books) { %> 
+                    <% books.forEach((book) => { %>
+                        <div class="each-book">
+                            <div class="book-details">
+                                <img src="<%= book.coverUrl %>" alt="Book Cover for ISBN: <%= book.isbn %>" class="book-cover">
+    
+                                <div class="infos-2">
+                                    <a href="/display/<%= book.id %>" id="title" class="bookTitle"> <%= book.title %> </a>
+    
+                                    <p class="read newColor mg-tp"><strong>Date read:</strong> <%= book.date %> </p>
+    
+                                    <p class="newColor mg-tp"><strong>My rating on this book:</strong> <%= book.rating %>/10 </p>
+    
+                                    <p class="read-more newColor"><a href="/display/<%= book.id %>" class="yellow">Read my notes on this book</a> 
+                                        or see more details on <a href="https://www.amazon.com/s?k=<%= book.isbn %>" target="_blank" class="yellow">Amazon</a>
+                                    </p>
+                                </div>
+                            </div>
+    
+                            <p class="summary"> <%= book.summary %> </p>
+                        </div>
+                    <% }); %>
+                <% } %> 
+            </div>
+        </div>
+
+        <footer>
+            <p>Copyright &copy; <%= new Date().getFullYear() %> - Jonathan Afugwobi || All rights reserved.</p>
+        </footer>
+
+        <script src="/js/main.js"></script>
+    </body>
+</html>
