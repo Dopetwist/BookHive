@@ -1,0 +1,226 @@
+<%- include("partials/header.ejs") %>
+
+    <main>
+        <header class="profileLinks">
+            <div class="dropMenu">
+                <a href="#" role="button" id="accountDropdown">
+                    My Account <i class='bx bxs-down-arrow' id="menu-arrow"></i>
+                </a>
+    
+                <div class="dropdown-con">
+                    <div class="drop-outer">
+                        <div class="dropdown-menu">
+                            <a href="/change-pass" role="button" class="dropdown-item">Change password</a>
+                            <a href="/delete-account" role="button" class="dropdown-item">Delete Account</a>
+                            <a href="/log-out" role="button" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <section id="bio">
+                <div class="bio-con">
+                    <form action="/bio" method="POST" id="bio-form">
+                        <label for="bio">Briefly write about yourself.</label>
+                        <textarea name="bio" id="bio" rows="20" placeholder="Your Description..."></textarea>
+    
+                        <button type="submit">Submit</button>
+                        <a href="#" id="bio-close"><button>Close</button></a>
+                    </form>
+                </div>
+            </section>
+
+            <div class="overlay-con">
+                <div class="cover-container">
+                    <section id="head-shell">
+                        <div class="head-shell">
+                            <div class="head">
+                                <div class="head-texts">
+                                    <h1 class="prof">Welcome, <%= user.first_name %> <%= user.last_name %> </h1>
+                
+                                    <h2 class="prof"> Books i've read. </h2>
+                                </div>
+                
+                                <button id="back-to-top"><i class='bx bx-up-arrow-alt'></i></button>
+                            </div>
+                
+                            <div class="user-btn-con">
+                                <a href="/" role="button"><i class='bx bx-arrow-back'></i>Back to Home</a>
+
+                                <form action="/add" method="POST">
+                                    <button type="submit" class="add-button" id="add-book">Add New Book</button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+    
+
+                    <section id="profile-picture">
+                        <div class="profile-picture">
+                            <div class="img">
+                                <figure>
+                                    <img src="<%= user.profile_picture ? user.profile_picture : '/uploads/default.png' %>" alt="Profile Picture" id="profile-img" loading="lazy" onerror="this.onerror=null; this.src='/uploads/default.png';">
+                                </figure>
+                            </div>
+                            <form id="uploadForm" enctype="multipart/form-data">
+                                <input type="file" name="profile_picture" accept="image/*" id="file-input" required>
+                                <button type="submit" id="uploadBtn">Upload</button>
+                            </form>
+                            <form id="pic-delete-form">
+                                <button type="submit" id="changeBtn">Change Picture</button>
+                            </form>
+                            
+                            <!-- Loader  -->
+                            <section id="webLoader">
+                                <div id="loader" class="loader"></div>
+                            </section>
+                        </div>
+                    </section>
+                </div>
+    
+                
+    
+                <section id="userBio">
+                    <div class="bio">
+                        <% if (user.bio) { %> 
+                            <div class="user-bio">
+                                <div class="bio-text">
+                                    
+                                        <p class="user-bio-text"> <%- user.bio.replace(/\n/g, '<br>') %> 
+                                          <i class='bx bx-edit' id="edit-icon"></i>
+                                        </p>
+    
+                                        <form action="/bio" method="POST" id="edit-bio" hidden>
+                                            <textarea name="bio" id="bio-field"> <%= user.bio %> </textarea>
+                    
+                                            <button type="submit" id="done">Save changes</button>
+                                            <a href="#" id="cancel">Cancel</a>
+                                        </form>
+    
+                                        <% if (locals.message) { %> 
+                                            <p style="color: red;"> <%= message %> </p>
+                                        <% } %>
+                                </div> 
+    
+                            </div>
+                        <% } else { %> 
+                            <button id="get-bio">Add Bio</button>
+                        <% } %>
+                    </div>
+                </section>
+    
+                <section id="userSorting">
+                    <div class="sorting">
+                        <p class="sort"> <strong class="sort-by">Sort By:</strong> <a href="/sort-title?currentPage=profile&userId=<%= user.id %>" class="sortTitle">Title</a>, <a href="/sort-recent?currentPage=profile&userId=<%= user.id %>" class="sortRecent">Most Recent</a> and 
+                            <a href="/sort-rating?currentPage=profile&userId=<%= user.id %>" class="sortRating">Rating</a> 
+                        </p>
+                    </div>
+                </section>
+                    
+                <!-- Display any error that occured -->
+                <section id="userError">
+                    <% if (locals.error) { %> 
+                        <p class="error"> <%= error %> </p>
+                    <% } %> 
+                </section>
+                
+                
+                <section id="userBooklist">
+                    <% if (books.length > 0) { %>  
+                        <!-- Loop through each book -->
+                        <% if (locals.books) { %> 
+                            <% books.forEach((book) => { %>
+                                <div class="each-book">
+                                    <div class="book-details">
+                                        <figure>
+                                            <img src="<%= book.book_cover %>" alt="Book Cover" class="book-cover" loading="lazy" onerror="this.onerror=null; this.src='/images/default.png';">
+                                        </figure>
+        
+                                        <div class="infos-2">
+                                            <a href="/display/<%= book.source_table %>/<%= book.id %>" id="title" class="bookTitle"> <%= book.title %> </a>
+        
+                                            <p class="read newColor mg-tp"><strong class="strong">Posted on:</strong> <%= book.formatted_timestamp %> </p>
+    
+                                            <% if (book.source_table === "with_isbn") { %> 
+                                                <p class="newColor mg-tp"><strong class="strong">ISBN:</strong> <%= book.isbn %></p>
+                                            <% } %>
+        
+                                            <p class="newColor mg-tp"><strong class="strong">My rating on this book:</strong> <%= book.rating %>/10 </p>
+        
+                                            <p class="newColor mg-tp"><strong class="strong">Read by:</strong> <%= book.first_name %> <%= book.last_name %></p>
+        
+                                            <p class="read-more newColor"><a href="/display/<%= book.source_table %>/<%= book.id %>" class="yellow">Read notes on this book</a> 
+                                                <% if (book.source_table === "with_isbn") { %> 
+                                                    or see more details on <a href="https://www.amazon.com/s?k=<%= book.isbn %>" target="_blank" class="yellow">Amazon</a>
+                                                <% } %>
+                                            </p>
+                                        </div>
+                                    </div>
+        
+                                    <p class="summary"> <%= book.summary ? book.summary : "No summary available" %> </p>
+                                </div>
+                            <% }); %>
+                        <% } %>
+                    <% } else { %>  
+                        <p style="color: red;" class="noDisplay"> You don't have any Book yet! </p>
+                    <% } %>
+
+                    <!-- Display sorted books -->
+                    <div id="sorted-books">
+                        
+                    </div>
+                </section>
+            </div> 
+            
+        </div>
+
+
+        
+        <script>
+       
+            //Remove file input field when user sets profile picture
+            const profilePic = "<%= profilePicture %>";
+
+            function fileButton() {
+
+                const fileInput = document.getElementById("file-input");
+                const uploadBtn = document.getElementById("uploadBtn");
+                const changeBtn = document.getElementById("changeBtn");
+
+                if (profilePic && profilePic !== "null") {
+                    fileInput.style.display = "none";
+                    uploadBtn.style.display = "none";
+                    changeBtn.style.display = "block";
+                } else {
+                    fileInput.style.display = "block";
+                    uploadBtn.style.display = "block";
+                    changeBtn.style.display = "none";
+                }
+            }
+
+        
+            window.onload = fileButton; //Run the function on page load
+
+            // Bio field displays
+            const addBio = document.getElementById("get-bio");
+            const bioForm = document.getElementById("bio-form");
+            const bioClose = document.getElementById("bio-close");
+            const userOverlay = document.querySelector(".overlay-con");
+
+            document.addEventListener("DOMContentLoaded", () => {
+                addBio.addEventListener("click", () => {
+                    bioForm.style.display = "block";
+                    userOverlay.classList.add("backdrop");
+                });
+
+                bioClose.addEventListener("click", () => {
+                    bioForm.style.display = "none";
+                    userOverlay.classList.remove("backdrop");
+                });
+            });
+        </script>
+    </main>
+
+<%- include("partials/footer.ejs") %>

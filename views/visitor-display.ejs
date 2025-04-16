@@ -1,0 +1,71 @@
+<%- include("partials/header.ejs") %>
+
+    <main>
+        <div class="container" id="visit-display">
+            <div class="display">
+
+                <% if (currentPage === "visitProfile") { %> 
+                    <a href="/selected-user/<%= item.user_id %>" class="all-books"><i class='bx bx-arrow-back' id="visit-back-arrow"></i></a>
+                <% } else { %> 
+                    <a href="/" class="all-books"><i class='bx bx-arrow-back' id="visit-back-arrow"></i></a>
+                <% } %> 
+
+                <button id="back-to-top"><i class='bx bx-up-arrow-alt'></i></button>
+        
+                <div class="book-details">
+                    <section id="displayCover">
+                        <figure>
+                            <img src="<%= item.book_cover %>" alt="Book Cover" class="detail-img" loading="lazy" onerror="this.onerror=null; this.src='/images/default.png';">
+                        </figure>
+                    </section>
+
+                    <section id="infos">
+                        <div class="infos">
+                            <div class="top">
+                                <h2 class="detail-title"><%= item.title %></h2> 
+                    
+                                <p class="newColor timestamp mg-tp" data-utc="<%= item.created_at %>"> Loading...</p>
+    
+                                <% if (source_table === "with_isbn") { %> 
+                                    <p class="newColor mg-tp"><strong class="strong">ISBN:</strong> <%= item.isbn %></p>
+                                <% } %> 
+                    
+                                <p class="newColor mg-tp"><strong class="strong">My rating on this book:</strong> <%= item.rating %>/10</p>
+    
+                                <p class="newColor mg-tp"><strong class="strong">Read by:</strong> <%= item.first_name %> <%= item.last_name %></p>
+                            </div>
+    
+                            <div class="bottom">
+                                <% if (source_table === "with_isbn") { %> 
+                                    <p class="newColor">See more details and reviews on <a href="https://www.amazon.com/s?k=<%= item.isbn %>" 
+                                        target="_blank">Amazon</a>
+                                    </p>
+                                <% } %> 
+                    
+                                <% if (currentPage === "visitProfile") { %> 
+                                    <a href="/selected-user/<%= item.user_id %>" class="all-books">Back</a>
+                                <% } else { %> 
+                                    <a href="/" class="all-books bottom-back">Go Back to all Books</a>
+                                <% } %>
+                    
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <% if (locals.error) { %> 
+                    <p style="color: red;"> <%= error %> </p>
+                <% } %>
+                
+                <!-- Convert a newline character to a break tag for white space -->
+                <p class="dis-p"><%- (item && item.summary) ? item.summary.replace(/\n/g, '<br>') : 'No summary available' %></p>
+
+                <h2 class="note">My Notes:</h2>
+
+                <p class="dis-p"><%- (item && item.note) ? item.note.replace(/\n/g, '<br>') : 'No note available' %></p>
+
+            </div>
+        </div>
+    </main>
+
+<%- include("partials/footer.ejs") %>

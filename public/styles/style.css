@@ -1,46 +1,120 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    /* outline: none; */
 }
 
 body {
     min-height: 100vh;
-    background-color: #f5f5f5;
 }
 
 .head {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+[data-theme="dark"] {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .newColor {
+    color: #d3d3d3 !important;
+}
+
+[data-theme="dark"] #title {
+    color: #3cb371 !important;
+}
+
+[data-theme="dark"] #book-file, [data-theme="dark"] .book-img {
+    color: #000 !important;
+}
+
+[data-theme="dark"] #feedback-form .get, [data-theme="dark"] #feedback-form label,
+#bio-form label, #bio-form a, .display-user .user-name {
+    color: #000 !important;
+}
+
+[data-theme="dark"] a {
+    color: #fff !important; /* #87cefa */
+}
+
+[data-theme="dark"] h2.detail-title {
+    color: #87cefa !important;
+}
+
+[data-theme="dark"] #myAccount, p.log-p, .dropdown-menu a {
+    color: #000 !important;
+}
+
+[data-theme="dark"] a.btnn, a.cancel {
+    color: #fff !important;
+}
+
+[data-theme="dark"] .noDisplay {
+    color: #fff !important;
+}
+
+[data-theme="dark"] #feedbackBtn, .input-con i, #log-form label, 
+#log-form a {
+    color: #000 !important;
+}
+
+[data-theme="dark"] a.btnn:hover {
+    color: #cd853f !important;
+}
+
+[data-theme="dark"] #cancel {
+    color: #008080 !important;
+}
+
+[data-theme="dark"] #cancel:hover {
+    color: #fff !important;
+}
+
+[data-theme="light"] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+.noDisplay {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .toggle {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 5rem;
+}
+
+.toggle p {
+    font-size: 0.9rem;
 }
 
 .toggle i {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-left: 0.5rem;
     border: 0.15rem solid transparent;
     transition: .3s ease;
 }
 
 .toggle i:hover {
-    border: 0.15rem solid tomato;
+    border: 0.15rem solid #ff6347;
     border-radius: 0.3rem;
     cursor: pointer;
 }
 
-.main {
-    /* background-color: purple; */
+main {
     width: 100%;
     min-height: calc(100vh - 4rem);
     padding: 0 8%;
@@ -52,10 +126,14 @@ body {
     margin-top: 2rem;
 }
 
-.container .head-texts h1 {
+.container .head-texts h1.home {
+    font-family: "Alegreya SC", serif;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: 0.1rem;
     color: 	#008080;
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.3rem;
     transition: .3s ease;
 }
 
@@ -63,24 +141,248 @@ body {
     text-decoration: none;
 }
 
-.container .head-texts h1:hover {
-    transform: scale(1.05);
+.container .head-texts h1.prof {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.07rem;
+    color: 	#008080;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
-.container .head-texts h2 {
-    font-size: 2rem;
+.container .head-texts h2.home {
+    font-family: "Lato", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 0.09rem;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
+}
+
+.container .head-texts h2.prof {
+    font-family: "Lato", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 0.1rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cover-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0 2rem;
+    padding: 0 5%;
+}
+
+.head-shell {
+    text-align: center;
+}
+
+.home-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 3rem;
+}
+
+.app-overview {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.overview-con {
+    text-align: center;
+    width: 90%;
+}
+
+.explanation {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+#accountDropdown {
+    color: #000;
+    text-decoration: underline;
+}
+
+.dropMenu {
+    position: relative;
+    padding-top: 1.5rem;
+}
+
+.dropdown-con {
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+
+.drop-outer {
+    width: 20%;
+    display: none;
+}
+
+.dropdown-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    border-radius: 0.8rem;
+    background-color: #dcdcdc;
+}
+
+.dropdown-menu a {
+    width: 100%;
+    font-size: 1rem;
+    color: #000;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    padding-left: 1.3rem;
+    background-color: #dcdcdc;
+}
+
+.dropdown-menu a:hover {
+    background-color: #c0c0c0;
+    cursor: pointer;
+}
+
+.drop-outer.show {
+    display: block;
+}
+
+section#my-account {
+    margin-bottom: 2rem;
+}
+
+section.action-container {
+    width: 100%;
+    margin: 3rem auto 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8rem;
+}
+
+.action-texts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.actionBtns {
+    width: 70%;
+    margin-top: 2rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.actionBtns a {
+    width: 12rem;
+    font-size: 1.1rem;
+    margin: 0 2rem;
+    padding: 1rem;
+    color: #fff;
+    text-align: center;
+    border-radius: 2rem;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.actionBtns a#reg span {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-radius: 2rem;
+    z-index: -1;
+    background-color: #008080;
+    transition: 0.5s;
+}
+
+.actionBtns a#reg {
+    border: 0.2rem solid #008080;
+    color: #008080;
+}
+
+.actionBtns a#reg:hover span {
+    width: 100%;
+}
+
+.actionBtns a#reg:hover {
+    color: #fff;
+    border: 0.2rem solid transparent;
+}
+
+.actionBtns a#log span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 2rem;
+    z-index: -1;
+    color: #fff;
+    background-color: #20b2aa;
+    transition: 0.5s;
+}
+
+.actionBtns a#log {
+    background: #008080;
+    border: 0.2rem solid #008080;
+}
+
+.actionBtns a#log:hover span {
+    width: 0;
+    z-index: 100;
+}
+
+.actionBtns a#log:hover {
+    background: transparent;
+    color: #008080;
+    border: 0.2rem solid #008080;
 }
 
 p, a, button {
     font-family: "Poppins", serif;
 }
 
-h1, h2, .infos-2 a {
-    font-family: "Alegreya SC", serif;
-    font-weight: 700;
-    font-style: normal;
-    letter-spacing: 0.1rem;
+.my-acct {
+    color: #000;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+#welcome {
+    font-size: 1.4rem;
+    font-family: "Poppins", serif;
+}
+
+#my-account {
+    display: flex;
+    font-size: 0.9rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: #000;
+}
+
+#acct-pic {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin-bottom: 0.3rem;
 }
 
 .add-book h2, .edit h2 {
@@ -89,7 +391,7 @@ h1, h2, .infos-2 a {
 
 h2.detail-title {
     font-size: 2rem;
-    color: green;
+    color: #008000;
     margin-bottom: 1rem;
 }
 
@@ -106,17 +408,245 @@ h2.detail-title {
 
 .add-button:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 0.8rem yellow;
+    box-shadow: 0 0 0.8rem #ffff00;
     cursor: pointer;
 }
 
-p.lorem {
+#sorting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sorting {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-bottom: 0.2rem solid #d3d3d3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.search {
+    position: relative;
+    width: 40%;
+    left: 0;
+    margin-left: 3rem;
+    border-radius: 0.3rem;
+}
+
+.search-bar {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 0.5rem #000;
+    padding: 0.2rem 0;
+    border-radius: 0.3rem;
+}
+
+#search {
+    height: 100%;
+    width: 90%;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.6rem;
+    border: none;
+    outline: none;
+}
+
+#searchBtn {
+    height: 100%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.1rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+#searchBtn:hover {
+    cursor: pointer;
+}
+
+#searchBtn i {
+    font-size: 1.5rem;
+}
+
+#search-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+}
+
+p.errorHtml {
+    margin: 1rem;
+    font-size: 0.9rem;
+}
+
+p.form-error {
+    margin-bottom: 1rem;
+}
+
+p.errorBooks {
+    color: #ff0000;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+p.add-error {
+    margin: 0.5rem 0;
+}
+
+#sorted-books {
+    display: none;
+}
+
+#sorted-books.trigger {
+    display: block;
+}
+
+.sortedBooks-con {
+    margin-bottom: 3rem;
+    border-bottom: 0.2rem solid #d3d3d3;
+    padding-bottom: 2rem;
+}
+
+.user-name {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+}
+
+.userDp img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin: 0.5rem;
+}
+
+.user-name:hover {
+    cursor: pointer;
+    background-color: #c0c0c0;
+}
+
+.user-btn-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-btn-con a {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    margin-right: 5rem;
+    text-decoration: none;
+}
+
+.user-btn-con a i {
+    font-size: 1.5rem;
+    margin-right: 0.7rem;
+}
+
+#user-display, #visit-display {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+}
+
+.visitDisplay-profile {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #008080;
+    letter-spacing: 0.1rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.visitDisplay-p {
+    font-family: "Lato", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.1rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.visit-a {
+    font-size: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+}
+
+.visit-a i {
+    font-size: 1.4rem;
+    margin-right: 0.7rem;
+}
+
+.profile-picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#changeBtn, #uploadBtn {
+    margin: 0.5rem 0;
+    font-size: 0.8rem;
+    background: #008080;
+    color: #fff;
+    border: 0.2rem solid #008080;
+    outline: none;
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.5rem;
+    transition: .2s ease;
+}
+
+#changeBtn:hover, #uploadBtn:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: #008080;
+    border: 0.2rem solid #008080;
+}
+
+#uploadBtn {
+    margin-top: 0.3rem;
+}
+
+#changeBtn:hover, #uploadBtn:hover, #file-input:hover {
+    cursor: pointer;
+}
+
+.display-user {
+    display: none;
+    position: absolute;
+    width: 100%;
+    border-top: 0.2rem solid #008080;
+    background-color: #dcdcdc;
+    border-bottom-right-radius: 0.6rem;
+    border-bottom-left-radius: 0.6rem;
+    box-shadow: 0 0.4rem 0.5rem #d3d3d3;
+    z-index: 100;
+}
+
+.display-user.live {
+    display: block;
+}
+
+p.user-bio-text {
+    width: 100%;
     margin-bottom: 1rem;
     font-size: 1rem;
-
 }
 
 p.sort {
+    margin-top: 4rem;
     margin-bottom: 3rem;
     font-size: 1rem;
 }
@@ -125,20 +655,307 @@ p.error, p#errorMessage {
     color: #ff0000
 }
 
+p.logError {
+    color: #ff0000;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+p.edit-error {
+    margin: 0.5rem 0;
+}
+
+p#secret-warn {
+    font-size: 0.8rem;
+}
+
+p.already {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+}
+
+#reg-main, #log-main, #change-main, #del-main, #reset-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reg-form {
+    width: 70%;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+section#register {
+    width: 100%;
+}
+
+.register p.reg {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 0.5rem 0; 
+}
+
+.register label, #log-form label {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+}
+
+.register .back-arrow i {
+    font-size: 2rem;
+}
+
+#disp-back-arrow, #visit-back-arrow, #del-back-arrow, #res-back-arrow {
+    font-size: 2rem;
+}
+
+#visit-back-arrow {
+    margin-bottom: 2rem;
+}
+
+#reg-form input, .input-con input {
+    width: 90%;
+    font-size: 0.9rem;
+    padding: 0.1rem 0.5rem;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+#reg-form button, #changePass, #delete, #resetBtn {
+    font-size: 1rem;
+    background-color: #20b2aa;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    color: #fff;
+    border: none;
+    outline: none;
+    transition: .3s ease;
+}
+
+#reg-form button:hover, #changePass:hover, #delete:hover, #resetBtn:hover {
+    cursor: pointer;
+    background-color: #008080;
+}
+
+.input-con {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.1rem 0;
+    border-radius: 0.3rem;
+    border: 0.13rem solid #008080;
+    background-color: #fff;
+}
+
+.input-con i {
+    font-size: 1.1rem;
+    margin: 0.2rem 0.5rem;
+}
+
+.input-con #secret {
+    padding: 0.2rem 0.5rem;
+}
+
+.secret-con {
+    margin-top: 0.3rem;
+}
+
+.register {
+    width: 80%;
+}
+
+section#login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.log-btn {
+    width: 100%;
+    background: #20b2aa;
+    color: #fff;
+    font-weight: 500;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.log-btn:hover {
+    cursor: pointer;
+    background: #008080;
+}
+
+#log-form {
+    width: 50%;
+    background: #dcdcdc;
+    padding: 2rem 1rem;
+    border-radius: 0.7rem;
+    box-shadow: 0 0.3rem 0.7rem #555;
+}
+
+.log-back-arrow {
+    font-size: 2rem;
+}
+
+.login p.log {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 0.3rem 0 1rem;
+    text-align: center;
+}
+
+#f-password, #sign-up-link {
+    font-size: 0.9rem;
+}
+
+.sign-up-con {
+    width: 100%;
+    text-align: center;
+    margin: 2rem 0 2rem;
+}
+
+section#change {
+    width: 100%;
+}
+
+.change {
+    width: 50%;
+    margin-top: 2rem;
+}
+
+.change-p {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.changePass-con, .regBtn-con {
+    width: 100%;
+    display: flex;
+}
+
+.change-loader, .reg-loader {
+    display: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0.45rem solid #d3d3d3;
+    border-top: 0.45rem solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 0.6rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#change-form {
+    width: 100%;
+    padding: 2rem 0;
+}
+
+#change-form input, #delete-form input, #reset-form input {
+    width: 80%;
+    font-size: 0.9rem;
+    padding: 0.3rem 1rem;
+    margin-top: 0.3rem;
+    border-radius: 0.4rem;
+    border: 0.13rem solid #008080;
+}
+
+#change-form label, #delete-form label, #reset-form label {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+}
+
+section#del-section, section#reset {
+    width: 100%;
+}
+
+.delete, .reset {
+    width: 50%;
+}
+
+.delete p.del-p, .reset p.reset-p {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.deleteBtn-con, .resetBtn-con {
+    display: flex;
+    align-items: center;
+}
+
+#delete-form, #reset-form {
+    margin-top: 2rem;
+}
+
+#del-back-arrow, #res-back-arrow {
+    margin-bottom: 2.5rem;
+}
+
 .each-book {
     margin-bottom: 3rem;
-    border-bottom: 0.2rem solid lightgray;
-    padding-bottom: 1rem;
+    border-bottom: 0.2rem solid #d3d3d3;
+    padding-bottom: 2rem;
+}
+
+.each-book.disp {
+    display: none;
+}
+
+.book-p {
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.add-book .details {
+    margin-bottom: 0.6rem;
 }
 
 .book-cover {
-    font-size: 1rem;
+    width: 9rem;
     margin: 0.8rem 2rem 1rem 0;
-    border: 0.5rem solid gray;
+    border: 0.3rem solid #808080;
 }
 
 .book-details {
     display: flex;
+}
+
+.book-img {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.names {
+    text-decoration: none;
+}
+
+.names:hover {
+    text-decoration: underline;
+}
+
+a.cancel {
+    margin-left: 3rem;
 }
 
 .infos {
@@ -150,24 +967,38 @@ p.error, p#errorMessage {
 }
 
 .infos p, .infos-2 p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #555;
 }
 
 .infos-2 {
-    padding-top: 1.5rem;
+    padding-top: 1rem;
 }
 
 .mg-tp {
-    margin-top: 1rem;
-} 
+    margin-top: 0.8rem;
+}
+
+.strong {
+    margin-right: 0.3rem;
+}
 
 .summary {
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 .detail-img {
+    width: 11rem;
     margin: 1rem 1rem 2rem 0;
+    border: 0.3rem solid #808080;
+}
+
+.bottom {
+    margin-top: 2.3rem;
+}
+
+.bottom-back {
+    margin-top: 1rem;
 }
 
 .buttons {
@@ -175,15 +1006,14 @@ p.error, p#errorMessage {
     display: flex;
     align-items: center;
     margin: 1rem 0;
-    /* background-color: red; */
 }
 
 .buttons a {
     padding: 0.2rem 0.3rem;
     border-radius: 0.4rem;
-    background-color: peru;
+    background-color: #cd853f;
     color: #fff;
-    border: 0.15rem solid peru;
+    border: 0.15rem solid #cd853f;
     font-weight: 500;
     letter-spacing: 0.03rem;
     transition: .3s ease;
@@ -191,10 +1021,10 @@ p.error, p#errorMessage {
 }
 
 .buttons a:hover {
-    color: peru;
+    color: #cd853f;
     background-color: #fff;
-    border: 0.15rem solid peru;
-    box-shadow: 0 0 0.5rem peru;
+    border: 0.15rem solid #cd853f;
+    box-shadow: 0 0 0.5rem #cd853f;
     cursor: pointer;
 }
 
@@ -202,8 +1032,9 @@ a.edit-btn {
     margin-right: 1rem;
 }
 
+
 .note {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin: 4rem 0 2rem 0;
 }
 
@@ -215,8 +1046,7 @@ a.edit-btn {
 }
 
 .add-btns, .edit-btns {
-    width: 40%;
-    /* background-color: red; */
+    width: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -225,7 +1055,6 @@ a.edit-btn {
 
 .add-btns button, .add-btns a, .edit-btns button, .edit-btns a {
     font-size: 1rem;
-    /* font-weight: bold; */
     color: #fff;
     background-color: #3cb371;
     padding: 0.2rem 0.9rem;
@@ -237,7 +1066,7 @@ a.edit-btn {
 
 .add-btns button:hover, .add-btns a:hover, .edit-btns button:hover, .edit-btns a:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 1rem yellow;
+    box-shadow: 0 0 1rem #ffff00;
     cursor: pointer;
 }
 
@@ -246,7 +1075,11 @@ a.edit-btn {
 }
 
 .read-more {
-    margin-top: 6rem;
+    margin-top: 2rem;
+}
+
+#main-imgs {
+    margin-bottom: 3rem;
 }
 
 .man {
@@ -259,6 +1092,340 @@ a.edit-btn {
     width: 25vw;
     margin-bottom: 2rem;
     border-radius: 1rem;
+}
+
+#join-text {
+    margin-bottom: 3rem;
+}
+
+.close {
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-btn {
+    color: #000;
+    font-size: 2rem;
+}
+
+.close-btn:hover {
+    background-color: #ff0000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.backdrop {
+    filter: blur(0.3rem);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+#newBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.2); /* Optional: slight dark effect */
+    display: none;
+    backdrop-filter: blur(0.3rem);
+}
+  
+#newBackdrop.alive {
+    display: block;
+}
+
+.loader {
+    display: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0.45rem solid #f3f3f3;
+    border-top: 0.45rem solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0.5rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* .toast {
+    visibility: hidden;
+    position: fixed;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.toast.show {
+    visibility: visible;
+    animation: fadeOut 3s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+} */
+
+#edit-icon {
+    color: #008080;
+    font-size: 1.3rem;
+    margin-left: 0.2rem;
+}
+
+#edit-icon:hover {
+    cursor: pointer;
+}
+
+#done {
+    font-size: 0.85rem;
+    background: #008080;
+    color: #fff;
+    border: 0.2rem solid #008080;
+    outline: none;
+    padding: 0.1rem 0.4rem;
+    margin-right: 1.3rem;
+    border-radius: 0.5rem;
+    transition: .2s ease;
+}
+
+#done:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: #008080;
+    border: 0.2rem solid #008080;
+}
+
+#cancel {
+    font-size: 0.9rem;
+    background: #fff;
+    color: #008080;
+    border: 0.2rem solid #008080;
+    outline: none;
+    padding: 0.1rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: .2s ease;
+}
+
+#cancel:hover {
+    cursor: pointer;
+    background-color: #008080;
+    color: #fff;
+    border: 0.2rem solid #008080;
+}
+
+#bio-form {
+    background-color: #0000ff;
+}
+
+#bio-field {
+    width: 100%;
+    font-size: 1rem;
+    font-family: "Poppins", serif;
+    resize: none;
+    background-color: #fff;
+    box-shadow: 0 0 0.3rem #0000ff;
+    border-radius: 0.5rem;
+    padding: 1rem 0.6rem;
+    margin-bottom: 0.7rem;
+}
+
+.bio-text {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    border: 0.15rem solid #d3d3d3;
+}
+
+.float-nav-links.active {
+    right: 0;
+}
+
+.btnns, .loginBtn-con {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.float-nav-links {
+    width: 80%;
+    height: 100vh;
+    position: fixed;
+    top: 15%;
+    right: -100%;
+    background-color: #f5f5f5;
+    color: #000;
+    padding-top: 1rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    box-shadow: 0 0 0.8rem #555;
+    transition: right .3s ease-in-out;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.float-item {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0.8rem 1.5rem 0.8rem 0;
+}
+
+.float-item:hover {
+    cursor: pointer;
+    background-color: #c0c0c0;
+}
+
+.items {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+#menu-icon {
+    display: none;
+    position: relative;
+    float: right;
+    cursor: pointer;
+    z-index: 200;
+}
+
+.new-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.new-toggle i {
+    font-size: 1.8rem;
+    margin-left: 0.4rem;
+}
+
+#myAccount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0.8rem;
+    margin-right: 2rem;
+}
+
+.feedback-loader, .log-loader {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.feedback-con {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    float: right;
+    width: 70%;
+}
+
+#feedback-form {
+    display: none;
+    position: absolute;
+    width: 60%;
+    padding: 2rem 1rem;
+    background-color: #add8e6;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem #000;
+    z-index: 100;
+}
+
+#feedback-form p.get {
+    font-family: "Poppins", serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#feedback-form label {
+    font-family: "Poppins", serif;
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
+}
+
+#feedback-form input, #feedback-form textarea {
+    width: 100%;
+    font-size: 0.9rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0.9rem;
+    margin-top: 0.3rem;
+    border-radius: 0.5rem;
+    border: 0.15rem solid #808080;
+    outline-color: #000080;
+    padding: 0.4rem 0.5rem;
+}
+
+#feedback-form textarea {
+    resize: none;
+}
+
+.feedbackBtn-class {
+    background: #20b2aa;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    border: 0.2rem solid #008080;
+    outline: none;
+}
+
+.feedbackBtn-class:hover {
+    cursor: pointer;
+    background: #008080;
+}
+
+#feedbackMessage {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+#feedBtn {
+    width: 100%;
+    background: #008080;
+    color: #fff;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    border-radius: 0.4rem;
+    border: none;
+    outline: none;
+    transition: .3s ease;
+}
+
+#feedBtn:hover {
+    cursor: pointer;
+    background: #20b2aa;
+}
+
+#profile-img {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    border: 0.2rem solid #008080;
 }
 
 #back-to-top {
@@ -286,10 +1453,48 @@ a.edit-btn {
     font-size: 2rem;
 }
 
+#to-top {
+    display: none;
+    position: fixed;
+    bottom: 3rem;
+    right: 5rem;
+    padding: 0.3rem;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    background-color: #ff6347;
+    box-shadow: 0 0 0.5rem #555;
+    color: #fff;
+    z-index: 99;
+}
+
+#to-top:hover {
+    background-color: #555;
+    box-shadow: 0 0 0.5rem #ff6347;
+    cursor: pointer;
+}
+
+#to-top i {
+    font-size: 2rem;
+}
+
 #title {
+    font-family: "Alegreya SC", serif;
+    font-weight: 600;
     font-size: 1.6rem;
     color: #483d8b;
     text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+#edit-form .noIsbn-cover {
+    margin-bottom: 1rem;
+}
+
+#edit-form label {
+    font-size: 0.9rem;
+    font-family: "Poppins", sans-serif;
+    margin: 0.5rem 0;
 }
 
 #new, #edit-form {
@@ -298,9 +1503,9 @@ a.edit-btn {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 2rem 0;
+    margin: 1.5rem 0;
     padding: 1.5rem;
-    background-color: lightgray;
+    background-color: #d3d3d3;
     border-radius: 1rem;
     box-shadow: 0 0 1rem #000;
 }
@@ -311,13 +1516,80 @@ a.edit-btn {
     font-size: 1rem;
     margin-bottom: 1rem;
     border-radius: 0.5rem;
-    border: 0.1rem solid gray;
+    border: 0.1rem solid #808080;
     padding: 0.5rem 0.8rem;
     line-height: 1.4;
 }
 
 #new textarea, #edit-form textarea {
     resize: none;
+}
+
+#new input[type="file"], #edit-form input[type="file"] {
+    margin-bottom: 2rem;
+    background-color: #ffebcd;
+}
+
+#file-input {
+    width: 80%;
+    background-color: transparent;
+    border: 0.1rem solid #d3d3d3;
+    border-radius: 0.3rem;
+    padding: 0.2rem;
+}
+
+#file-input:hover {
+    cursor: pointer;
+}
+
+.bio-con {
+    display: flex;
+    justify-content: flex-end;
+    width: 70%;
+    position: relative;
+    float: right;
+}
+
+#bio-form {
+    display: none;
+    position: absolute;
+    width: 70%;
+    flex-direction: column;
+    background-color: #dcdcdc;
+    border-radius: 1rem;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 0.4rem 0.8rem #808080;
+    z-index: 100;
+}
+
+#bio-form label {
+    font-family: "Poppins", sans-serif;
+}
+
+#bio-form textarea {
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    outline-color: #0000ff;
+    resize: none;
+}
+
+#bio-form button, #get-bio {
+    color: #000;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+    border: 0.15rem solid #008080;
+    outline: none;
+}
+
+#bio-form button:hover, #get-bio:hover {
+    color: #fff;
+    background-color: #008080;
+    cursor: pointer;
 }
 
 footer {
@@ -327,4 +1599,1231 @@ footer {
     height: 2rem;
     color: #fff;
     background-color: #483d8b;
+}
+
+/* ======================================================================================== */
+
+/* Breakpoints  */
+
+@media (max-width: 479px) {
+    main {
+        padding: 0 6%;
+    }
+
+    #log-main {
+        padding: 0 3%;
+    }
+
+    .container .head-texts h1.home {
+        font-size: 2rem;
+    }
+
+    .container .head-texts h2.home {
+        font-size: 0.9rem;
+    }
+
+    #menu-icon {
+        display: block;
+        font-size: 1.6rem;
+    }
+
+    .home-btns {
+        display: none;
+    }
+
+    .home-btns a {
+        font-size: 0.9rem;
+    }
+
+    .drop-outer {
+        width: 30%;
+        padding: 0.1rem;
+        border-radius: 0.7rem;
+    }
+
+    .dropdown-menu a {
+        font-size: 0.75rem;
+        padding-left: 0.7rem;
+        border-radius: 0.7rem;
+    }
+
+    .book-details {
+        margin-bottom: 3rem;
+    }
+
+    .each-book {
+        padding-bottom: 2rem;
+    }
+
+    #acct-pic {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-bottom: 0.2rem;
+    }
+
+    #myAccount {
+        color: #000;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    #search {
+        font-size: 0.83rem;
+    }
+
+    #searchBtn i {
+        font-size: 1.3rem;
+    }
+
+    .float-item p, .float-item #feedbackBtn, .user-name p {
+        font-size: 0.9rem;
+    }
+
+    .userDp img {
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 50%;
+        margin: 0.3rem;
+    }
+
+    .user-name {
+        font-size: 0.7rem;
+        margin-left: 0.3rem;
+    }
+
+    #welcome {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+    }
+
+    .explanation, .join-text {
+        font-size: 0.9rem;
+        line-height: 1.9;
+    }
+
+    .action-texts p {
+        width: 80%;
+        font-size: 0.8rem;
+        line-height: 1.7;
+        text-align: center;
+    }
+
+    .actionBtns a#reg {
+        border: 0.15rem solid #008080;
+        color: #008080;
+    }
+
+    .actionBtns {
+        width: 70%;
+        margin-top: 1rem;
+        padding: 0.9rem;
+    }
+
+    .actionBtns a {
+        width: 9rem;
+        font-size: 0.8rem;
+        margin: 0 1rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    #feedbackMessage {
+        font-size: 0.8rem;
+    }
+
+    #feedbackBtn {
+        background: transparent;
+        color: #000;
+        font-weight: 400;
+        padding: 0;
+        border-radius: 0;
+        border: none;
+        outline: none;
+        text-decoration: none;
+    }
+
+    section.action-container {
+        margin: 3rem auto 2rem;
+        margin-bottom: 6rem;
+    }
+
+    .smaller-imgs {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .man {
+        width: 80vw;
+    }
+
+    .books {
+        width: 45vw;
+    }
+
+    #title {
+        font-size: 1.1rem;
+    }
+
+    .infos p, .infos-2 p, .no-isbn-link {
+        font-size: 0.8rem;
+    }
+
+    .mg-tp {
+        margin-top: 0.6rem;
+    }
+
+    .summary {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .book-cover {
+        width: 6rem;
+        margin-right: 1rem;
+    }
+
+    .detail-img {
+        width: 7.5rem;
+    }
+
+    h2.detail-title {
+        font-size: 1.3rem;
+    }
+
+    .bottom-back {
+        font-size: 0.9rem;
+        margin-top: 0.8rem;
+    }
+
+    .display .dis-p {
+        font-size: 0.9rem;
+        line-height: 1.9;
+    }
+
+    .note {
+        font-size: 1.4rem;
+    }
+
+    .book-img {
+        font-size: 1rem;
+    }
+
+    .book-p {
+        font-size: 1.4rem;
+    }
+
+    #new, #edit-form {
+        width: 80%;
+        padding: 1rem;
+    }
+
+    #new input, #new textarea, #edit-form input, #edit-form textarea {
+        font-size: 0.8rem;
+    }
+
+    .add-btns, .edit-btns {
+        width: 100%;
+    }
+
+    .add-btns button, .add-btns a, .edit-btns button, .edit-btns a {
+        font-size: 0.8rem;
+    }
+
+    #back-to-top i {
+        font-size: 1.5rem;
+    }
+
+    #visit-back-arrow, #disp-back-arrow, .register .back-arrow i, #res-back-arrow {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .visitDisplay-profile {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .visitDisplay-p {
+        font-size: 1rem;
+    }
+
+    .visit-shell a {
+        font-size: 1rem;
+    }
+
+    .visit-a {
+        font-size: 0.9rem;
+    }
+
+    .visit-a i {
+        font-size: 1.2rem;
+        margin-right: 0.7rem;
+    }
+
+    #log-form {
+        width: 70%;
+    }
+
+    .login p.log {
+        font-size: 1.2rem;
+    }
+
+    .log-back-arrow {
+        font-size: 1.5rem;
+    }
+
+    p.logError {
+        font-size: 0.9rem;
+    }
+
+    .loader {
+        width: 2rem;
+        height: 2rem;
+        border: 0.3rem solid #f3f3f3;
+        border-top: 0.3rem solid #3498db;
+    }
+
+    .change-loader, .reg-loader {
+        width: 1.8rem;
+        height: 1.8rem;
+        border: 0.3rem solid #d3d3d3;
+        border-top: 0.3rem solid #3498db;
+    }
+
+    p.already {
+        font-size: 0.8rem;
+    }
+
+    #feedback-form p.get {
+        font-size: 1rem;
+    }
+
+    .close i {
+        font-size: 1.4rem;
+    }
+
+    .register, .reset {
+        width: 100%;
+    }
+
+    #log-form label, .log-btn, .register label, #change-form label, 
+    #delete-form label, #feedback-form label, #feedBtn {
+        font-size: 0.8rem;
+    }
+
+    #f-password, #sign-up-link {
+        font-size: 0.8rem;
+    }
+
+    .register p.reg, .reset p.reset-p, .change-p, .delete p.del-p {
+        font-size: 1.1rem;
+    }
+
+    #reg-form button, #changePass, #delete {
+        font-size: 0.8rem;
+    }
+
+    #reg-form input, .input-con input, #change-form input, #feedback-form input, #feedback-form textarea {
+        font-size: 0.8rem;
+    }
+
+    #reset-form, .delete {
+        width: 80%;
+    }
+
+    #reset-form label {
+        font-size: 0.8rem;
+    }
+
+    #reset-form input {
+        width: 90%;
+        font-size: 0.8rem;
+    }
+
+    #resetBtn {
+        font-size: 0.8rem;
+    }
+
+    .secretCon {
+        width: 90%;
+    }
+
+    p#secret-warn {
+        font-size: 0.7rem;
+    }
+
+    .infos {
+        margin: 1rem;
+    }
+
+    .bottom {
+        margin-top: 2.1rem;
+    }
+
+    #profile-img {
+        width: 10rem;
+        height: 10rem;
+        margin-top: 2.5rem;
+    }
+
+    .change {
+        width: 80%;
+    }
+
+    #changeBtn, #uploadBtn {
+        font-size: 0.7rem;
+        margin-bottom: 2rem;
+    }
+
+    .cover-container {
+        flex-direction: column-reverse;
+    }
+
+    .container .head-texts h1.prof {
+        font-size: 1.6rem;
+    }
+
+    .container .head-texts h2.prof {
+        font-size: 1rem;
+    }
+
+    .user-btn-con a {
+        font-size: 0.9rem;
+    }
+
+    .user-btn-con a i {
+        font-size: 1.1rem;
+    }
+    
+    .add-button {
+        font-size: 0.8rem;
+    }
+
+    p.user-bio-text, #bio-field {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    #done {
+        font-size: 0.8rem;
+    }
+
+    #cancel {
+        font-size: 0.7rem;
+    }
+
+    p.sort {
+        font-size: 0.9rem;
+    }
+
+    .buttons a {
+        width: 20rem;
+        padding: 0.1rem 0.2rem;
+        border-radius: 0.4rem;
+        border: 0.13rem solid #cd853f;
+        font-weight: 400;
+        letter-spacing: 0.02rem;
+        text-align: center;
+    }
+
+    .sorting {
+        display: block;
+    }
+
+    p.sort {
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+    }
+
+    p.form-error, p.edit-error, p.add-error {
+        font-size: 0.8rem;
+    }
+
+    .search {
+        position: relative;
+        width: 80%;
+        left: 0;
+        margin-left: 0.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .feedback-con {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #feedback-form {
+        max-width: 90%;
+        z-index: 100;
+    }
+
+    .bio-con {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #bio-form {
+        max-width: 80%;
+    }
+
+    #bio-form button {
+        font-size: 0.7rem;
+    }
+
+    #get-bio {
+        font-size: 0.7rem;
+    }
+
+    #accountDropdown, .dropdown-item {
+        font-size: 0.9rem;
+    }
+
+    #file-input {
+        font-size: 0.7rem;
+    }
+
+    .noDisplay {
+        font-size: 0.9rem;
+    }
+
+    footer {
+        font-size: 0.7rem;
+    }
+
+}
+
+/* =============================================================================== */
+
+@media (min-width: 480px) and (max-width: 767px) {
+    
+    #log-main {
+        padding: 0 3%;
+    }
+
+    .container .head-texts h1.home {
+        font-size: 2.1rem;
+    }
+
+    .container .head-texts h2.home {
+        font-size: 1rem;
+    }
+
+    #menu-icon {
+        display: block;
+        font-size: 1.65rem;
+    }
+
+    .buttons {
+        width: 60%;
+    }
+
+    .home-btns {
+        display: none;
+    }
+
+    .home-btns a {
+        font-size: 0.9rem;
+    }
+
+    .drop-outer {
+        width: 30%;
+        padding: 0.5rem 0;
+        border-radius: 0.7rem;
+    }
+
+    .dropdown-menu a {
+        font-size: 0.8rem;
+        padding-left: 0.7rem;
+    }
+
+    .book-details {
+        margin-bottom: 3rem;
+    }
+
+    .each-book {
+        padding-bottom: 2rem;
+    }
+
+    #acct-pic {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-bottom: 0.2rem;
+    }
+
+    #myAccount {
+        color: #000;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    #search {
+        font-size: 0.8rem;
+    }
+
+    #searchBtn i {
+        font-size: 1.3rem;
+    }
+
+    .infos p, .infos-2 p, .no-isbn-link {
+        font-size: 0.8rem;
+    }
+
+    p.form-error, p.edit-error, p.add-error {
+        font-size: 0.8rem;
+    }
+
+    .userDp img {
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 50%;
+        margin: 0.3rem;
+    }
+
+    .float-item p, .float-item #feedbackBtn, .user-name p {
+        font-size: 0.9rem;
+    }
+
+    .user-name {
+        font-size: 0.9rem;
+        margin-left: 0.3rem;
+    }
+
+    #welcome {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+    }
+
+    .explanation, .join-text {
+        font-size: 0.9rem;
+        line-height: 1.9;
+    }
+
+    .action-texts p {
+        width: 90%;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        text-align: center;
+    }
+
+    .actionBtns a#reg {
+        border: 0.15rem solid #008080;
+        color: #008080;
+    }
+
+    .actionBtns a {
+        width: 10rem;
+        font-size: 0.9rem;
+        margin: 0 1rem;
+        padding: 0.6rem 0.8rem;
+    }
+
+    .loader {
+        width: 2rem;
+        height: 2rem;
+        border: 0.3rem solid #f3f3f3;
+        border-top: 0.3rem solid #3498db;
+    }
+
+    .change-loader, .reg-loader {
+        width: 1.8rem;
+        height: 1.8rem;
+        border: 0.3rem solid #d3d3d3;
+        border-top: 0.3rem solid #3498db;
+    }
+
+    #feedbackMessage {
+        font-size: 0.8rem;
+    }
+
+    #feedbackBtn {
+        background: transparent;
+        color: #000;
+        font-weight: 400;
+        padding: 0;
+        border-radius: 0;
+        border: none;
+        outline: none;
+        text-decoration: none;
+    }
+
+    section.action-container {
+        margin: 3rem auto 2rem;
+        margin-bottom: 6rem;
+    }
+
+    .smaller-imgs {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .man {
+        width: 80vw;
+    }
+
+    .books {
+        width: 45vw;
+    }
+
+    #title {
+        font-size: 1.1rem;
+    }
+
+    .infos p, .infos-2 p {
+        font-size: 0.7rem;
+    }
+
+    .mg-tp {
+        margin-top: 0.6rem;
+    }
+
+    .summary {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .book-cover {
+        width: 7rem;
+        margin-right: 1rem;
+    }
+
+    .detail-img {
+        width: 9rem;
+    }
+
+    h2.detail-title {
+        font-size: 1.5rem;
+    }
+
+    .bottom-back {
+        font-size: 0.95rem;
+        margin-top: 0.8rem;
+    }
+
+    .display .dis-p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+
+    .note {
+        font-size: 1.4rem;
+    }
+
+    .book-img {
+        font-size: 1rem;
+    }
+
+    .book-p {
+        font-size: 1.6rem;
+    }
+
+    #new, #edit-form {
+        width: 80%;
+    }
+
+    #new input, #new textarea, #edit-form input, #edit-form textarea {
+        font-size: 0.9rem;
+    }
+
+    .edit-btns {
+        width: 70%;
+    }
+
+    .add-btns button, .add-btns a, .edit-btns button, .edit-btns a {
+        font-size: 0.9rem;
+    }
+
+    #back-to-top i {
+        font-size: 1.5rem;
+    }
+
+    #visit-back-arrow, #disp-back-arrow, .register .back-arrow i {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .visitDisplay-profile {
+        font-size: 1.7rem;
+        margin-top: 1rem;
+    }
+
+    .visitDisplay-p {
+        font-size: 1rem;
+    }
+
+    .visit-shell a {
+        font-size: 1rem;
+    }
+
+    #log-form {
+        width: 60%;
+    }
+
+    .login p.log {
+        font-size: 1.2rem;
+    }
+
+    p.already, p.logError {
+        font-size: 0.9rem;
+    }
+
+    #feedback-form p.get {
+        font-size: 1.1rem;
+    }
+
+    #feedback-form input, #feedback-form textarea {
+        font-size: 0.9rem;
+    }
+
+    .close i {
+        font-size: 1.5rem;
+    }
+
+    .register, .reset {
+        width: 100%;
+    }
+
+    #log-form label, .log-btn, #change-form label, 
+    #delete-form label, #feedback-form label, #feedBtn {
+        font-size: 0.9rem;
+    }
+
+    #f-password, #sign-up-link {
+        font-size: 0.8rem;
+    }
+
+    .register p.reg, .delete p.del-p, .change-p {
+        font-size: 1.2rem;
+    }
+
+    .delete, .change {
+        width: 70%;
+    }
+
+    #delete-form input {
+        width: 90%;
+    }
+
+    #reg-form button, #delete, #changePass {
+        font-size: 0.9rem;
+    }
+
+    #reset-form {
+        width: 80%;
+    }
+
+    #reset-form label {
+        font-size: 0.9rem;
+    }
+
+    #resetBtn {
+        font-size: 0.9rem;
+    }
+
+    p#secret-warn {
+        font-size: 0.7rem;
+    }
+
+    .infos {
+        margin: 1rem;
+    }
+
+    .bottom {
+        margin-top: 2.1rem;
+    }
+
+    #profile-img {
+        width: 10rem;
+        height: 10rem;
+        margin-top: 2.5rem;
+    }
+
+    #file-input {
+        font-size: 0.7rem;
+    }
+
+    #changeBtn, #uploadBtn {
+        font-size: 0.7rem;
+        margin-bottom: 2rem;
+    }
+
+    .cover-container {
+        flex-direction: column-reverse;
+    }
+
+    .container .head-texts h1.prof {
+        font-size: 1.7rem;
+    }
+
+    .container .head-texts h2.prof {
+        font-size: 1.2rem;
+    }
+
+    .user-btn-con a {
+        font-size: 0.9rem;
+    }
+    
+    .add-button {
+        font-size: 0.8rem;
+    }
+
+    p.user-bio-text, #bio-field {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    #done {
+        font-size: 0.8rem;
+    }
+
+    #cancel {
+        font-size: 0.7rem;
+    }
+
+    p.sort {
+        font-size: 0.9rem;
+    }
+
+    .buttons a {
+        width: 20rem;
+        padding: 0.1rem 0.2rem;
+        border-radius: 0.4rem;
+        border: 0.13rem solid #cd853f;
+        font-weight: 400;
+        letter-spacing: 0.02rem;
+        text-align: center;
+    }
+
+    .sorting {
+        display: block;
+    }
+
+    p.sort {
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+    }
+
+    .search {
+        position: relative;
+        width: 80%;
+        left: 0;
+        margin-left: 0.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .feedback-con {
+        width: 100%;
+        justify-content: center;
+        clear: right;
+    }
+
+    #feedback-form {
+        max-width: 80%;
+    }
+
+    .bio-con {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #bio-form {
+        max-width: 60%;
+    }
+
+    #bio-form button {
+        font-size: 0.7rem;
+    }
+
+    #get-bio {
+        font-size: 0.7rem;
+    }
+
+    #accountDropdown, .dropdown-item {
+        font-size: 0.9rem;
+    }
+
+    .noDisplay {
+        font-size: 0.9rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}
+
+/* =============================================================================== */
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .container .head-texts h1.home {
+        font-size: 2.5rem;
+    }
+
+    .container .head-texts h2.home {
+        font-size: 1rem;
+    }
+
+    .buttons {
+        width: 60%;
+    }
+
+    #welcome {
+        margin: 3rem 0;
+    }
+
+    .action-texts p {
+        text-align: center;
+    }
+
+    .home-btns a {
+        font-size: 0.9rem;
+    }
+
+    #acct-pic {
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .toggle p {
+        font-size: 0.9rem;
+    }
+
+    .toggle i {
+        font-size: 2rem;
+    }
+
+    .feedbackBtn-class {
+        font-size: 0.7rem;
+        font-weight: 400;
+        padding: 0.3rem;
+        border-radius: 0.5rem;
+        border: 0.15rem solid #008080;
+    }
+
+    #new input, #new textarea, #edit-form input, #edit-form textarea {
+        font-size: 0.9rem;
+    }
+
+    .search {
+        width: 45%;
+    }
+
+    .user-name {
+        font-size: 0.9rem;
+    }
+
+    .userDp img {
+        width: 2.3rem;
+        height: 2.3rem;
+    }
+
+    #title {
+        font-size: 1.3rem;
+    }
+
+    #back-to-top i {
+        font-size: 1.5rem;
+    }
+
+    #new, #edit-form {
+        max-width: 80%;
+    }
+
+    .book-p {
+        font-size: 1.7rem;
+    }
+
+    p.form-error, p.edit-error, p.add-error {
+        font-size: 0.9rem;
+    }
+
+    .infos p, .infos-2 p, .no-isbn-link {
+        font-size: 0.9rem;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
+
+    .edit-btns {
+        width: 70%;
+    }
+
+    .add-btns button, .add-btns a, .edit-btns button, .edit-btns a {
+        font-size: 0.9rem;
+    }
+
+    .actionBtns {
+        padding: 0.8rem;
+    }
+    
+    .actionBtns a {
+        width: 11rem;
+        font-size: 1rem;
+        margin: 0 2rem;
+        padding: 0.8rem;
+        border-radius: 1.9rem;
+    }
+
+    .drop-outer {
+        width: 30%;
+        padding: 0.5rem;
+        border-radius: 0.7rem;
+    }
+
+    .dropdown-menu a {
+        font-size: 0.9rem;
+        padding-left: 0.8rem;
+    }
+
+    .loader {
+        width: 2rem;
+        height: 2rem;
+        border: 0.3rem solid #f3f3f3;
+        border-top: 0.3rem solid #3498db;
+    }
+
+    .change-loader, .reg-loader {
+        width: 1.8rem;
+        height: 1.8rem;
+        border: 0.3rem solid #d3d3d3;
+        border-top: 0.3rem solid #3498db;
+    }
+    
+    .infos .detail-title {
+        font-size: 1.6rem;
+    } 
+
+    .detail-img {
+        width: 10rem;
+    }
+
+    .note {
+        font-size: 1.5rem;
+    }
+
+    #log-form {
+        max-width: 40%;
+    }
+
+    .login p.log {
+        font-size: 1.5rem;
+    }
+
+    .bottom-back {
+        font-size: 0.9rem;
+    }
+
+    #visit-back-arrow, #disp-back-arrow, .register .back-arrow i {
+        font-size: 1.8rem;
+    }
+
+    .register p.reg {
+        font-size: 1.5rem;
+    }
+
+    .container .head-texts h1.prof {
+        font-size: 2rem;
+    }
+
+    .container .head-texts h2.prof {
+        font-size: 1.3rem;
+    }
+
+    .user-btn-con a {
+        font-size: 0.9rem;
+    }
+
+    .add-button {
+        font-size: 0.8rem;
+    }
+
+    p.already, p.logError {
+        font-size: 0.9rem;
+    }
+
+    .feedback-con {
+        width: 80%;
+    }
+
+    #feedback-form {
+        width: 70%;
+    }
+
+    #feedback-form p.get {
+        font-size: 1.3rem;
+    }
+
+    #feedback-form input, #feedback-form textarea {
+        font-size: 0.9rem;
+    }
+
+    #feedback-form label, #feedBtn {
+        font-size: 0.9rem;
+    }
+
+    .close i {
+        font-size: 1.5rem;
+    }
+
+    .profile-picture {
+        margin-left: 2rem;
+    }
+
+    #profile-img {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    #file-input {
+        font-size: 0.7rem;
+    }
+
+    #changeBtn, #uploadBtn, #get-bio {
+        font-size: 0.7rem;
+    }
+
+    #change-form label, #delete-form label, #reset-form label {
+        font-size: 0.9rem;
+    }
+
+    #change-form input, #delete-form input, #reset-form input {
+        font-size: 0.8rem;
+    }
+
+    .delete p.del-p, .reset p.reset-p {
+        font-size: 1.2rem;
+    }
+
+    #reg-form button, #changePass, #delete, #resetBtn {
+        font-size: 0.9rem;
+    }
+
+    .buttons a {
+        font-size: 0.9rem;
+    }
+
+    .visitDisplay-profile {
+        font-size: 2.3rem;
+    }
+
+    .visitDisplay-p {
+        font-size: 1.3rem;
+    }
+
+    .visit-shell a {
+        font-size: 1rem;
+    }
+
+    .noDisplay {
+        font-size: 1rem;
+    }
+}
+
+/* =============================================================================== */
+
+@media (min-width: 1200px) {
+    #log-form {
+        max-width: 40%;
+    }
 }

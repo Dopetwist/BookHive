@@ -1,46 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Book Notes | Jonathan Afugwobi</title>
-        <link rel="stylesheet" href="/styles/style.css">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    </head>
-    <body>
+<%- include("partials/header.ejs") %>
 
-        <div class="main">
-            <div class="container">
-                <div class="edit">
-                    <% if (locals.item) { %> 
-                        <h2>Edit Book Details</h2>
-            
-                        <form action="/edit-book/<%= item[0].id %>" method="POST" id="edit-form">
+    <main>
+        <div class="container">
+            <div class="edit">
+                <% if (locals.errorMsg) { %> 
+                    <p style="color: red;"> <%= errorMsg %> </p>
+                <% } %>
+
+                <% if (locals.item) { %> 
+                    <p class="book-p">Edit Book Details</p>
+
+                    <% if (locals.error) { %> 
+                        <p style="color: red;" class="edit-error"> <%= error %> </p>
+                    <% } %>
+        
+                    <% if (source_table === "with_isbn") { %> 
+                        <form action="/edit-book/<%= source_table %>/<%= item[0].id %>" method="POST" id="edit-form">
                             <input type="text" name="editTitle" value="<%= item[0].title %>" placeholder="Title" required>
                             <input type="number" name="editIsbn" value="<%= item[0].isbn %>" placeholder="ISBN" required>
-                            <input type="text" id="dateInput" name="editDate" value="<%= item[0].date %>" pattern="\d{4}\/(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])" placeholder="YYYY/MM/DD" required>
                             <input type="text" name="editRating" maxlength="2" value="<%= item[0].rating %>" placeholder="Rate over 10" required>
                             <textarea name="editSummary" id="summary" rows="5" placeholder="Book Summary" required><%= item[0].summary %></textarea>
                             <textarea name="editNote" id="note" placeholder="Your Note" rows="10"><%= item[0].note %></textarea>
             
                             <div class="edit-btns">
                                 <button type="submit">Update</button>
-                                <a href="/">Cancel</a>
+                                <a href="/profile" role="button">Cancel</a>
                             </div>
                         </form>
-                    <% } %>
+                    <% } else { %> 
+                        <form action="/edit-book/<%= source_table %>/<%= item[0].id %>" method="POST" id="edit-form" enctype="multipart/form-data">
+                            <label for="book_cover">Current Book Cover:</label>
+                            <% if (filePath) { %> 
+                                <img src="<%= filePath %>" alt="Book Cover" class="noIsbn-cover" width="100">
+                            <% } else { %> 
+                                <img src="/images/default.png" alt="Book Cover" class="noIsbn-cover" width="100">
+                            <% } %>
+
+                            <label for="New_cover">Upload New Cover (If Necessary):</label>
+                            <input type="file" name="book_cover" id="book-file" accept="image/*">
+
+                            <input type="text" name="editTitle" value="<%= item[0].title %>" placeholder="Title" required>
+                            <input type="text" name="editRating" maxlength="2" value="<%= item[0].rating %>" placeholder="Rate over 10" required>
+                            <textarea name="editSummary" id="summary" rows="5" placeholder="Book Summary" required><%= item[0].summary %></textarea>
+                            <textarea name="editNote" id="note" placeholder="Your Note" rows="10"><%= item[0].note %></textarea>
             
-                    <% if (locals.error) { %> 
-                        <p class="error"> <%= error %> </p>
+                            <div class="edit-btns">
+                                <button type="submit">Update</button>
+                                <a href="/profile" role="button">Cancel</a>
+                            </div>
+                        </form>
                     <% } %> 
-                </div>
+                <% } %> 
             </div>
         </div>
-    
-        <footer>
-            <p>Copyright &copy; <%= new Date().getFullYear() %> - Jonathan Afugwobi || All rights reserved.</p>
-        </footer>
+    </main>
 
-        <script src="/js/main.js"></script>
-    </body>
-</html>
+<%- include("partials/footer.ejs") %>

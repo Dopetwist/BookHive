@@ -1,43 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Book Notes | Jonathan Afugwobi</title>
-        <link rel="stylesheet" href="/styles/style.css">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    </head>
-    <body id="new-id">
+<%- include("partials/header.ejs") %>
 
-        <div class="main">
+    <main>
+        <section id="add-book">
             <div class="container">
                 <div class="add-book">
-                    <h2>Details of new Book</h2>
-            
-                    <form action="/book" method="POST" id="new">
-                        <input type="text" name="title" id="new-title" placeholder="Book Title" required>
-            
-                        <input type="number" name="isbn" id="isbn" placeholder="ISBN" required>
-            
-                        <input type="text" name="rating" id="rating" placeholder="Rate the book over 10" maxlength="2" required>
+                    <p class="book-p details">Details of new Book</p>
+    
+                    <a href="/no_isbn" class="no-isbn-link">Use this link for Non-ISBN Books.</a>
+    
+                    <% if (locals.error) { %> 
+                        <p style="color: red;" class="add-error"> <%= error %> </p>
+                    <% } %>
 
-                        <textarea name="summary" id="summary" rows="5" placeholder="Book Summary" required></textarea>
+                    <form action="/book" method="POST" id="new">
+                        <input type="text" name="title" id="new-title" value="<%= formData?.title || '' %>" placeholder="Book Title" required>
             
-                        <textarea name="note" id="note" rows="10" placeholder="Your Notes..."></textarea>
+                        <input type="number" name="isbn" id="isbn" value="<%= formData?.isbn || '' %>" placeholder="ISBN" required>
+            
+                        <input type="text" name="rating" id="rating" value="<%= formData?.rating || '' %>" placeholder="Rate the book over 10" maxlength="2" required>
+    
+                        <textarea name="summary" id="summary" rows="5" placeholder="Book Summary" required><%= formData?.summary || '' %></textarea>
+            
+                        <textarea name="note" id="note" rows="10" placeholder="Your Notes..."><%= formData?.note || '' %></textarea>
+     
             
                         <div class="add-btns">
                             <button type="submit">Add</button>
-                            <a href="/"> Cancel</a>
+                            <a href="/profile" role="button" class="cancel"> Cancel</a>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <footer>
-            <p>Copyright &copy; <%= new Date().getFullYear() %> - Jonathan Afugwobi || All rights reserved.</p>
-        </footer>
-
-        <script src="/js/main.js"></script>
-    </body>
-</html>
+<%- include("partials/footer.ejs") %>

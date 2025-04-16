@@ -1,0 +1,69 @@
+<%- include("partials/header.ejs") %>
+
+    <main id="reg-main">
+        <section id="register">
+            <div class="register">
+                <a href="/" role="button" class="back-arrow"><i class='bx bx-arrow-back'></i></a>
+
+
+                <p class="reg">Create an Account</p>
+    
+                <form action="/register" method="POST" id="reg-form">
+                    <input type="hidden" id="timeZone" name="time_zone">
+    
+                    <label for="fName">First Name</label><br>
+                    <div class="input-con">
+                        <i class='bx bxs-user'></i><input type="text" name="firstName" value="<%= formData?.firstName || '' %>" id="fName" placeholder="John" required>
+                    </div>
+                    <br>
+    
+                    <label for="lname">Last Name</label><br>
+                    <div class="input-con">
+                        <i class='bx bx-user'></i><input type="text" name="lastName" value="<%= formData?.lastName || '' %>" id="lName" placeholder="Doe" required>
+                    </div>
+                    <br>
+    
+                    <label for="email">Email</label><br>
+                    <div class="input-con">
+                        <i class='bx bx-envelope'></i><input type="email" name="username" value="<%= formData?.email || '' %>" id="email" placeholder="johndoe@example.com" required>
+                    </div>
+                    <br>
+    
+                    <label for="password">Password</label><br>
+                    <div class="input-con">
+                        <i class='bx bxs-lock'></i><input type="password" name="password" value="<%= formData?.password || '' %>" id="pWord" placeholder="********" required>
+                    </div>
+                    <br>
+    
+                    <label for="confirm">Confirm Password</label><br>
+                    <div class="input-con">
+                        <i class='bx bx-lock-alt'></i><input type="password" name="confirm" value="<%= formData?.confirm || '' %>" id="cPassword" placeholder="********" required>
+                    </div>
+                    <br>
+    
+                    <label for="secret">Secret Word</label><br>
+                    <p style="color: red;" id="secret-warn">Keep this Secret Word very safe and do not share to anyone
+                        to avoid losing your account!
+                    </p>
+                    <div class="input-con secret-con">
+                        <input type="text" name="secretWord" value="<%= formData?.secretWord || '' %>" id="secret" placeholder="SecretWord" required>
+                    </div><br>
+    
+    
+                    <p class="already">Already have an account? <a href="/login-form">Sign In</a></p>
+    
+                    <% if (locals.error) { %> 
+                        <p style="color: red;" class="form-error"> <%= error %> </p> 
+                    <% } %> 
+    
+                    
+                    <div class="regBtn-con">
+                        <button type="submit" id="regBtn">Register</button>
+                        <div id="loader" class="reg-loader"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+<%- include("partials/footer.ejs") %>

@@ -3,36 +3,35 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Book Notes | Jonathan Afugwobi</title>
+        <title>Book Notes App | Book Hive</title>
         <link rel="stylesheet" href="/styles/style.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <script>
+            // Apply the theme as soon as the script runs
+            (function() {
+                let storedTheme = localStorage.getItem("selectedTheme") || "light";
+                applyTheme(storedTheme);
+            })();
+
+            //Function to apply theme
+            function applyTheme (themeMode) {
+                if (themeMode === "dark") {
+                    document.documentElement.setAttribute("data-theme", themeMode); // Set theme attribute
+                    toggleButton.classList.remove("bx-toggle-left");
+                    toggleButton.classList.add("bx-toggle-right");            
+                } else {
+                    document.documentElement.setAttribute("data-theme", themeMode); // Set theme attribute
+                    toggleButton.classList.remove("bx-toggle-right");
+                    toggleButton.classList.add("bx-toggle-left");
+                }
+            }
+        </script>
     </head>
     <body>
 
-        <div class="main">
-            <div class="container">
-                <div class="head">
-                    <div class="head-texts">
-                        <a href="/"><h1> Jonathan Afugwobi </h1></a>
-        
-                        <h2> Books i've read. </h2>
-                    </div>
-        
-                    <div class="toggle">
-                        <p class="themeToggle">Change Theme</p><i class='bx bx-toggle-left' id="toggle-left"></i>
-                    </div>
-        
-                    <button id="back-to-top"><i class='bx bx-up-arrow-alt'></i></button>
-                </div>
+    
 
-                <form action="/add" method="POST">
-                    <button type="submit" class="add-button" id="add-book">Add New Book</button>
-                </form>
-            </div>
-        </div>
-
-        <script src="/js/main.js"></script>
-    </body>
-</html>
+ 
 
     

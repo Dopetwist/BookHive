@@ -1,0 +1,44 @@
+<%- include("partials/header.ejs") %>
+
+    <main id="reset-main">
+        <section id="reset">
+            <div class="reset">
+
+                <a href="/login-form" role="button"><i class='bx bx-arrow-back' id="res-back-arrow"></i></a>
+                
+                <p class="reset-p">Reset your Password</p> 
+    
+                <form action="/reset" method="POST" id="reset-form">
+    
+                    <label for="email">Email</label><br>
+                    <input type="email" name="username" value="<%= formData?.email || '' %>" id="email" required>
+                    <br><br>
+    
+                    <label for="password">New Password</label><br>
+                    <input type="password" name="password" value="<%= formData?.password || '' %>" id="pWord" required>
+                    <br><br>
+    
+                    <label for="confirm">Confirm Password</label><br>
+                    <input type="password" name="confirm" value="<%= formData?.confirm || '' %>" id="cPassword" required>
+                    <br><br>
+    
+                    <label for="secret">What's your Secret Word?</label><br>
+                    <div class="secretCon">
+                        <p style="color: red;" id="secret-warn">Fill in the secret word you chose when you created your account.</p>
+                    </div>
+                    <input type="text" name="secretWord" value="<%= formData?.secretWord || '' %>" id="secret" required><br><br>
+    
+                    <% if (locals.error) { %> 
+                        <p style="color: red;" class="form-error"> <%= error %> </p>
+                    <% } %> 
+    
+                    <div class="resetBtn-con">
+                        <button type="submit" id="resetBtn">Submit</button>
+                        <div id="loader" class="change-loader"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+<%- include("partials/footer.ejs") %>
