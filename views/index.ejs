@@ -1,84 +1,226 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Book Notes | Jonathan Afugwobi</title>
-        <link rel="stylesheet" href="/styles/style.css">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    </head>
-    <body>
+<%- include("partials/header.ejs") %>
 
-        <div class="main">
-            <div class="container">
-                <div class="head">
-                    <div class="head-texts">
-                        <a href="/"><h1> Jonathan Afugwobi </h1></a>
-        
-                        <h2> Books i've read. </h2>
-                    </div>
-        
-                    <div class="toggle">
-                        <p class="themeToggle">Change Theme</p><i class='bx bx-toggle-left' id="toggle-button"></i>
-                    </div>
-        
-                    <button id="back-to-top"><i class='bx bx-up-arrow-alt'></i></button>
-                </div>
+    <main>
+        <div class="container">
 
-                <form action="/add" method="POST">
-                    <button type="submit" class="add-button" id="add-book">Add New Book</button>
-                </form>
-
-                <div class="imgs">
-                    <img src="/images/writers-scene-concept.jpg" alt="Man Reading Book" class="man">
-                    <img src="/images/Books.jpg" alt="Books" class="books">
-                </div>
+            <section id="feedback">
+                <div class="feedback-con">
+                    <form id="feedback-form">
+                        <p class="get">Get in touch with us.</p>
+        
+                        <div class="close">
+                            <i class='bx bx-x close-btn'></i>
+                        </div>
+                        
+                        <label for="uName">Full Name:</label>
+                        <input type="text" name="name" id="uName" placeholder="Enter your Full name" autocomplete="on" required>
     
-                <p class="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Numquam excepturi obcaecati autem aut, inventore officia beatae magnam culpa repellendus eaque 
-                    laboriosam odit, tenetur nulla quisquam, optio fuga. Vero rerum labore aut totam est. Iusto, 
-                    quas quis reprehenderit beatae aut dolore?
-                </p>
+                        <label for="uEmail">Email:</label>
+                        <input type="email" name="email" id="uEmail" placeholder="Enter a valid email address" autocomplete="on" required>
     
-                <p class="sort"> <strong class="sort-by">Sort By:</strong> <a href="/sort-title" class="yellow">Title</a>, <a href="/sort-recent" class="yellow">Most Recent</a> and 
-                    <a href="/sort-rating" class="yellow">Rating</a> </p>
+                        <label for="message">Feedback:</label>
+                        <textarea name="message" id="message" placeholder="Your message..." rows="10" required></textarea>
+        
+                        <p id="feedbackMessage"></p> <!-- Display confirmation message -->
+                        <div class="btnns">
+                            <button type="submit" id="feedBtn">Send Feedback</button>
+                            <div id="loader" class="loader feedback-loader"></div> <!-- Loader -->
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section id="toTop">
+                <button id="back-to-top"><i class='bx bx-up-arrow-alt'></i></button>
+            </section>
+
+            <i class='bx bx-menu' id="menu-icon"></i>
+
+            <div class="newBackdrop" id="newBackdrop"></div>
+            <div class="float-nav-links">
+                <div class="items">
+                    <a href="/profile" id="myAccount">
+                        <img src="<%= user ? user.profilePic : '/uploads/default.png' %>" alt="User Picture" id="acct-pic" loading="lazy" onerror="this.onerror=null; this.src='/uploads/default.png';">
+
+                        <%= user ? user.firstName : 'Log in' %>
+                    </a>
+
+                    <div class="new-toggle float-item">
+                        <p class="themeToggle">Change Theme</p><i class='bx bx-toggle-left' id="new-toggle-button"></i>
+                    </div>
+    
+                    <div class="float-item">
+                        <a href="#" id="feedbackBtn" role="button">Feedback/Feature Request</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+            <div class="overlay">
+                <section id="appName">
+                    <div class="head">
+                        <div class="head-texts">
+                            <h1 class="home"> BookHive </h1>
+        
+                            <h2 class="home"> Explore interesting Books. </h2>
+                        </div>
+
+                       
+
+                        
+        
+                        <div class="home-btns">
+                            <section>
+                                <a href="/profile" id="my-account">
+                                    <img src="<%= user ? user.profilePic : '/uploads/default.png' %>" alt="User Picture" id="acct-pic" loading="lazy" onerror="this.onerror=null; this.src='/uploads/default.png';">
+
+                                    <%= user ? user.firstName : 'Log in' %>
+                                </a>
+                            </section>
+
+                            <div class="toggle">
+                                <p class="themeToggle">Change Theme</p><i class='bx bx-toggle-left' id="toggle-button"></i>
+                            </div>
+            
+                            <button class="feedbackBtn-class">Feedback/Feature Request</button>
+                        </div>
+                    </div>
+                </section>
+    
+    
+                <section class="app-overview">
+                    <div class="overview-con">
+                        <p id="welcome">Welcome to BookHive - Your Personal Book Notes Companion</p>
+
+                        <p class="explanation">
+                            Are you an avid reader who loves keeping track of the books you've read? 
+                            Do you often find yourself forgetting key insights from past reads?
+                            With BookHive, you can document your reading journey effortlessly, making it easier than ever to revisit, 
+                            reflect, and organize your thoughts on every book you explore.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="action-container">
+                    <div class="action-texts">
+                        <p>Start your journey today! Sign up now and take control of your reading history like never before.</p>
+
+                        <div class="actionBtns">
+                            <a href="/register-form" role="button" id="reg"><span></span>Register</a>
+                            <a href="/login-form" role="button" id="log"><span></span>Login</a>
+                        </div>
+                    </div>
+                </section>
+
+    
+                <section id="main-imgs">
+                    <div class="imgs">
+                        <figure> 
+                            <img src="/images/writers-scene-concept.jpg" alt="Man Reading Book" class="man"> 
+                            <img src="/images/Books.jpg" alt="Books" class="books">
+                        </figure>
+                    </div>
+                </section>
+    
+                <section id="join-text">
+                    <p class="join-text">Easily keep a personal record of all the books you've read, complete with timestamps and notes, 
+                        so you never lose track of your literary adventures. <br>
+                        Jot down key takeaways, favorite quotes, and personal reflections. Your notes are stored securely 
+                        and can be retrieved instantly whenever you need them. <br><br>
+                        Join a community of passionate readers who value learning and self-improvement. 
+                        Whether you’re reading for pleasure, study, or professional growth, <em>BookHive</em> ensures that every 
+                        book you read leaves a lasting impact.
+                    </p>
+                </section>
+    
+                <section id="sorting">
+                    <div class="sorting">
+                        <p class="sort"> <strong class="sort-by">Sort By:</strong> <a href="/sort-title" class="sortTitle">Title</a>, <a href="/sort-recent" class="sortRecent">Most Recent</a> and 
+                            <a href="/sort-rating" class="sortRating">Rating</a> 
+                        </p>
+
+                        
+                        <div class="search"> 
+                            <div class="search-bar">
+                                <form id="search-form">
+                                    <input type="text" name="search" id="search" placeholder="Search for a User" autocomplete="on" required>
+        
+                                    <button type="submit" id="searchBtn"><i class='bx bx-search'></i></button>
+                                </form>
+                            </div>
+        
+                            <!-- List searched Users -->
+                            <div class="display-user">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </section>
                     
                     <!-- Display any error that occured -->
-                <% if (locals.error) { %> 
-                    <p class="error"> <%= error %> </p>
-                <% } %> 
+                <section id="errorDisplay">
+                    <% if (locals.error) { %> 
+                        <p style="color: red;"> <%= error %> </p>
+                    <% } %>
+                </section>
+                
     
-                <!-- Loop through each book -->
-                <% if (locals.books) { %> 
-                    <% books.forEach((book) => { %>
-                        <div class="each-book">
-                            <div class="book-details">
-                                <img src="<%= book.coverUrl %>" alt="Book Cover for ISBN: <%= book.isbn %>" class="book-cover">
+                <section id="booksList">
+                    <% if (books.length > 0) { %>  
+                        <!-- Loop through each book -->
+                        <% if (locals.books) { %> 
+                            <% books.forEach((book) => { %>
+                                <div class="each-book">                           
+                                    <div class="book-details">
+                                        <section id="book-cover">
+                                            <figure>
+                                                <img src="<%= book.book_cover %>" alt="Book Cover" class="book-cover" loading="lazy" onerror="this.onerror=null; this.src='/images/default.png';">
+                                            </figure>
+                                        </section>
+                                        
+                                        <section id="infos-2">
+                                            <div class="infos-2">
+                                                <a href="/visitor-display/<%= book.source_table %>/<%= book.id %>" id="title" class="bookTitle"> <%= book.title %> </a>
+            
+                                                <p class="timestamp read newColor mg-tp" data-utc="<%= book.created_at %>"> Loading... </p>
+        
+                                                <% if (book.source_table === "with_isbn") { %> 
+                                                    <p class="newColor mg-tp"><strong class="strong">ISBN:</strong> <%= book.isbn %></p>
+                                                <% } %>
+            
+                                                <p class="newColor mg-tp"><strong class="strong">My Rating on this book:</strong> <%= book.rating %>/10 </p>
+            
+                                                <p class="newColor mg-tp"><strong class="strong">Read by:</strong> <a href="/selected-user/<%= book.user_id %>" class="names"> <%= book.first_name %> <%= book.last_name %> </a></p>
+            
+                                                <p class="read-more newColor"><a href="/visitor-display/<%= book.source_table %>/<%= book.id %>" class="yellow">Read my notes on this book</a> 
+                                                    <% if (book.source_table === "with_isbn") { %> 
+                                                        or see more details on <a href="https://www.amazon.com/s?k=<%= book.isbn %>" target="_blank" class="yellow">Amazon</a>
+                                                    <% } %> 
+                                                </p>
+                                            </div>
+                                        </section>
+                                    </div>
+        
     
-                                <div class="infos-2">
-                                    <a href="/display/<%= book.id %>" id="title" class="bookTitle"> <%= book.title %> </a>
-    
-                                    <p class="read newColor mg-tp"><strong>Date read:</strong> <%= book.date %> </p>
-    
-                                    <p class="newColor mg-tp"><strong>My rating on this book:</strong> <%= book.rating %>/10 </p>
-    
-                                    <p class="read-more newColor"><a href="/display/<%= book.id %>" class="yellow">Read my notes on this book</a> 
-                                        or see more details on <a href="https://www.amazon.com/s?k=<%= book.isbn %>" target="_blank" class="yellow">Amazon</a>
-                                    </p>
+                                    <section id="summary">
+                                        <p class="summary"><%= book.summary ? book.summary : 'No summary available' %></p>
+                                    </section>
                                 </div>
-                            </div>
-    
-                            <p class="summary"> <%= book.summary %> </p>
-                        </div>
-                    <% }); %>
-                <% } %> 
-            </div>
+                            <% }); %>
+                        <% } %>
+                    <% } else { %>  
+                        <p style="color: red;" class="noDisplay"> No Books to display! </p>
+                    <% } %>
+                    
+                    <!-- Display sorted books -->
+                    <div id="sorted-books">
+                        
+                    </div>
+                </section>
+            </div> 
         </div>
 
-        <footer>
-            <p>Copyright &copy; <%= new Date().getFullYear() %> - Jonathan Afugwobi || All rights reserved.</p>
-        </footer>
+    </main>
 
-        <script src="/js/main.js"></script>
-    </body>
-</html>
+<%- include("partials/footer.ejs") %>

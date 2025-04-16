@@ -1,0 +1,47 @@
+<%- include("partials/header.ejs") %>
+
+    <main id="log-main">
+        <section id="login">
+            
+            <a href="/" role="button" class="log-back-arrow"><i class='bx bx-arrow-back'></i></a>
+
+            <div class="login">
+    
+                <form action="/login" method="POST" id="log-form">
+
+                    <p class="log log-p">Login</p>
+    
+                    <input type="hidden" id="timeZone" name="time_zone">
+    
+                    <label for="email" class="for-email">Email</label><br>
+                    <div class="input-con">
+                        <i class='bx bx-envelope'></i><input type="email" name="username" id="email" required>
+                    </div>
+                    <br>
+    
+                    <label for="password">Password</label><br>
+                    <div class="input-con">
+                        <i class='bx bxs-lock'></i><input type="password" name="password" id="pWord" required>
+                    </div>
+                    <br>
+    
+                    <a href="/forgot" id="f-password">Forgot Password?</a>
+                    <div class="sign-up-con">
+                        <p id="sign-up-link" class="log-p">Don't have an account? <a href="/register-form">Sign Up</a></p>
+                    </div>
+    
+                    <% if (error.length > 0) { %>
+                        <p style="color: red;" class="logError"> <%= error[0] %> </p>
+                    <% } %>
+                       
+    
+                    <div class="loginBtn-con" id="loginBtn-con">
+                        <button type="submit" class="log-btn">Login</button>
+                        <div id="loader" class="loader log-loader"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+<%- include("partials/footer.ejs") %>

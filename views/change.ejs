@@ -1,0 +1,44 @@
+<%- include("partials/header.ejs") %>
+
+    <main id="change-main">
+        <section id="change">
+            <div class="change">
+                <a href="/profile" role="button"><i class='bx bx-arrow-back' id="visit-back-arrow"></i></a>
+
+                <p class="change-p">Change your Password</p> 
+
+    
+                <form action="/change" method="POST" id="change-form">
+    
+                    <label for="old-pass">Old Password</label><br>
+                    <input type="text" name="oldPass" value="<%= formData?.oldPass || '' %>" id="old-pass" required>
+                    <br><br>
+    
+                    <label for="password">New Password</label><br>
+                    <input type="password" name="newPassword" value="<%= formData?.newPassword || '' %>" id="pWord" required>
+                    <br><br>
+    
+                    <label for="confirm">Confirm Password</label><br>
+                    <input type="password" name="confirm" value="<%= formData?.confirm || '' %>" id="cPassword" required>
+                    <br><br>
+    
+                    <label for="secret">What's your Secret Word?</label><br>
+                    <div class="secretCon">
+                        <p style="color: red;" id="secret-warn">Fill in the secret word you chose when you created your account.</p>
+                    </div>
+                    <input type="text" name="secretWord" value="<%= formData?.secretWord || '' %>" id="secret" required><br><br>
+    
+                    <% if (locals.error) { %> 
+                        <p style="color: red;" class="form-error"> <%= error %> </p>
+                    <% } %> 
+    
+                    <div class="changePass-con">
+                        <button type="submit" id="changePass">Submit</button>
+                        <div id="loader" class="change-loader"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+<%- include("partials/footer.ejs") %>

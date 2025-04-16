@@ -1,0 +1,64 @@
+<%- include("partials/header.ejs") %>
+
+    <main>
+        <section id="noIsbn">
+            <div class="container">
+                <div class="add-book">
+                    <p class="book-p">Fill in Book Details</p>
+    
+                    <% if (locals.error) { %> 
+                        <p style="color: red;" class="add-error"> <%= error %> </p>
+                    <% } %>
+
+                    <form action="/book-with-no-isbn" method="POST" id="new" enctype="multipart/form-data">
+    
+                        <p class="book-img"> Upload Book Cover if available. </p>
+    
+                        <input type="file" name="book_cover" id="book-file" accept="image/*">
+    
+                        <input type="text" name="title" id="new-title" value="<%= formData?.title || '' %>" placeholder="Book Title" required>
+            
+                        <input type="text" name="rating" id="rating" value="<%= formData?.rating || '' %>" placeholder="Rate the book over 10" maxlength="2" required>
+    
+                        <textarea name="summary" id="summary" rows="5" placeholder="Book Summary" required><%= formData?.summary || '' %></textarea>
+            
+                        <textarea name="note" id="note" rows="10" placeholder="Your Notes..."><%= formData?.note || '' %></textarea>
+    
+            
+                        <div class="add-btns">
+                            <button type="submit">Submit</button>
+                            <a href="/profile" role="button" class="cancel"> Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Remove file input field when user uploads book cover -->
+        <!-- <script>
+            const bookCover = "";
+
+            function fileButton() {
+
+                const fileInput = document.getElementById("book-file");
+                const uploadBtn = document.getElementById("uploadBtn");
+                const changeBtn = document.getElementById("changeBtn");
+
+                if (bookCover && bookCover !== "null") {
+                    fileInput.style.display = "none";
+                    uploadBtn.style.display = "none";
+                    changeBtn.style.display = "block";
+                } else {
+                    fileInput.style.display = "block";
+                    uploadBtn.style.display = "block";
+                    changeBtn.style.display = "none";
+                }
+            }
+
+            //Run the function on page load
+            window.onload = fileButton;
+        </script> -->
+    </main>
+
+<%- include("partials/footer.ejs") %>

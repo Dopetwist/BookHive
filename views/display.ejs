@@ -1,63 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Book Notes | Jonathan Afugwobi</title>
-        <link rel="stylesheet" href="/styles/style.css">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    </head>
-    <body>
+<%- include("partials/header.ejs") %>
 
-        <div class="main">
-            <div class="container">
-                <div class="display">
-            
-                    <div class="book-details">
-                        <img src="<%= coverUrl %>" alt="Book Cover for ISBN: <%= item[0].isbn %>" class="detail-img">
+    <main>
+        <div class="container" id="user-display">
+            <div class="display">
+
+                <a href="/profile" class="all-books"><i class='bx bx-arrow-back' id="disp-back-arrow"></i></a>
         
-                        <div class="infos">
-                            <div class="top">
-                                <h2 class="detail-title"><%= item[0].title %></h2> 
-    
-                                <p class="mg-tp"><strong>ISBN:</strong> <%= item[0].isbn %></p>
-                    
-                                <p class="mg-tp"><strong>Date read:</strong> <%= item[0].date %></p>
-                    
-                                <p class="mg-tp"><strong>My rating on this book:</strong> <%= item[0].rating %>/10</p>
-                            </div>
-    
-                            <div class="bottom">
-                                <p>See more details and reviews on <a href="https://www.amazon.com/s?k=<%= item[0].isbn %>" 
+                <div class="book-details">
+
+                    <button id="back-to-top"><i class='bx bx-up-arrow-alt'></i></button>
+
+                    <figure>
+                        <img src="<%= item[0].book_cover %>" alt="Book Cover" class="detail-img" loading="lazy" onerror="this.onerror=null; this.src='/images/default.png';">
+                    </figure>
+
+                    <div class="infos">
+                        <div class="top">
+                            <h2 class="detail-title"><%= item[0].title %></h2> 
+                
+                            <p class="newColor mg-tp"><strong class="strong">Posted on:</strong> <%= item[0].formatted_timestamp %></p>
+
+                            <% if (source_table === "with_isbn") { %> 
+                                <p class="newColor mg-tp"><strong class="strong">ISBN:</strong> <%= item[0].isbn %></p>
+                            <% } %>
+                
+                            <p class="newColor mg-tp"><strong class="strong">My rating on this book:</strong> <%= item[0].rating %>/10</p>
+                        </div>
+
+                        <div class="bottom">
+                            <% if (source_table === "with_isbn") { %> 
+                                <p class="newColor">See more details and reviews on <a href="https://www.amazon.com/s?k=<%= item[0].isbn %>" 
                                     target="_blank">Amazon</a>
                                 </p>
-                    
-                                <a href="/" class="all-books">Go Back to all Books</a>
-                    
-                                <div class="buttons">
-                                    <a href="/edit/<%= item[0].id %>" class="edit-btn">Edit Book</a>
-                                    <a href="/delete/<%= item[0].id %>">Delete Book</a>
-                                </div>
+                            <% } %>
+                
+                
+                            <div class="buttons">
+                                <a href="/edit/<%= source_table %>/<%= item[0].id %>" class="edit-btn btnn" role="button">Edit Book</a>
+                                <a href="/delete/<%= source_table %>/<%= item[0].id %>" class="btnn" role="button">Delete Book</a>
                             </div>
                         </div>
                     </div>
-        
-                    
-                    <!-- Convert a newline character to a break tag for white space -->
-                    <p><%- item[0].summary.replace(/\n/g, '<br>') %></p>
-        
-                    <h2 class="note">My Notes:</h2>
-        
-                    <p><%- item[0].note.replace(/\n/g, '<br>') %></p>
-        
                 </div>
+
+                <% if (locals.error) { %> 
+                    <p style="color: red;"> <%= error %> </p>
+                <% } %>
+                
+                <!-- Convert a newline character to a break tag for white space -->
+                <p class="dis-p"><%- (item[0] && item[0].summary) ? item[0].summary.replace(/\n/g, '<br>') : 'No summary available' %></p>
+
+
+                <h2 class="note">My Notes:</h2>
+             
+                <p class="dis-p"><%- (item[0] && item[0].note) ? item[0].note.replace(/\n/g, '<br>') : 'No note available' %></p>
+
             </div>
         </div>
-    
-        <footer>
-            <p>Copyright &copy; <%= new Date().getFullYear() %> - Jonathan Afugwobi || All rights reserved.</p>
-        </footer>
+    </main>
 
-        <script src="/js/main.js"></script>
-    </body>
-</html>
+<%- include("partials/footer.ejs") %>

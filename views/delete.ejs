@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs") %>
+
+    <main id="del-main">
+        <section id="del-section">
+            <a href="/profile" role="button"><i class='bx bx-arrow-back' id="del-back-arrow"></i></a>
+
+            <div class="delete">
+                <p class="del-p">Confirm to Delete your Account</p>
+    
+                <div id="toast" class="toast"></div>
+    
+                <form action="/delete" method="POST" id="delete-form">  
+    
+                    <label for="password">Enter your Password</label><br>
+                    <input type="password" name="password" value="<%= formData?.password || '' %>" id="pWord" required>
+                    <br><br>
+    
+                    <label for="secret">What's your Secret Word?</label><br>
+                    <input type="text" name="secretWord" value="<%= formData?.secretWord || '' %>" id="secret" required>
+                    <br><br>
+                    
+    
+                    <% if (locals.error) { %> 
+                        <p style="color: red;" class="form-error"> <%= error %> </p>
+                    <% } %>
+    
+                    <div class="deleteBtn-con">
+                        <button type="submit" id="delete">Confirm Delete</button>
+                        <div id="loader" class="change-loader"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+<%- include("partials/footer.ejs") %>

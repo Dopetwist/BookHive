@@ -1,0 +1,108 @@
+<%- include("partials/header.ejs") %>
+
+    <main>
+        <div class="container">
+            <a href="/" role="button" class="visit-a"><i class='bx bx-arrow-back'></i>Back to Home</a>
+
+            <div class="overlay-con">
+                <div class="cover-container">
+                    <div class="head-shell visit-shell">
+                        <div class="head">
+                            <div class="head-texts">
+                                <p class="visitDisplay-profile"> <%= user.first_name %> <%= user.last_name %> </p>
+            
+                                <p class="visitDisplay-p"> Books i've read. </p>
+                            </div>
+                        </div>
+
+                        <button id="back-to-top"><i class='bx bx-up-arrow-alt'></i></button>
+                    </div>
+    
+                    <div class="profile-picture">
+                        <div class="img">
+                            <figure>
+                                <img src="<%= user.profile_picture ? user.profile_picture : '/uploads/default.png' %>" alt="Profile Picture" id="profile-img">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+    
+                <button id="to-top"><i class='bx bx-up-arrow-alt'></i></button>
+    
+                <div class="bio">
+                    <% if (user.bio) { %> 
+                        <div class="user-bio">
+                            <div class="bio-text">
+                                
+                                    <p class="user-bio-text"> <%- user.bio.replace(/\n/g, '<br>') %> </p>
+
+                                    <% if (locals.message) { %> 
+                                        <p style="color: red;"> <%= message %> </p>
+                                    <% } %>
+                            </div>
+
+                        </div>
+                   <% } %> 
+                </div>
+    
+                <div class="sorting">
+                    <p class="sort"> <strong class="sort-by">Sort By:</strong> <a href="/sort-title?currentPage=visitProfile&userId=<%= user.id %>" class="sortTitle">Title</a>, <a href="/sort-recent?currentPage=visitProfile&userId=<%= user.id %>" class="sortRecent">Most Recent</a> and 
+                        <a href="/sort-rating?currentPage=visitProfile&userId=<%= user.id %>" class="sortRating">Rating</a>
+                    </p>
+                </div>
+                    
+                    <!-- Display any error that occured --> 
+                <% if (locals.error) { %> 
+                    <p class="error"> <%= error %> </p>
+                <% } %> 
+                
+                
+                <% if (books.length > 0) { %>  
+                    <!-- Loop through each book -->
+                    <% if (locals.books) { %> 
+                        <% books.forEach((book) => { %>
+                            <div class="each-book">
+                                <div class="book-details">
+                                    <figure>
+                                        <img src="<%= book.book_cover %>" alt="Book Cover" class="book-cover" loading="lazy" onerror="this.onerror=null; this.src='/images/default.png';"> 
+                                    </figure>
+    
+                                    <div class="infos-2">
+                                        <a href="/visitor-display/<%= book.source_table %>/<%= book.id %>?currentPage=visitProfile" id="title" class="bookTitle"> <%= book.title %> </a>
+    
+                                        <p class="read newColor mg-tp"><strong class="strong">Posted on:</strong> <%= book.formatted_timestamp %> </p>
+
+                                        <% if (book.source_table === "with_isbn") { %> 
+                                            <p class="newColor mg-tp"><strong class="strong">ISBN:</strong> <%= book.isbn %></p>
+                                        <% } %>
+    
+                                        <p class="newColor mg-tp"><strong class="strong">My rating on this book:</strong> <%= book.rating %>/10 </p>
+    
+                                        <p class="newColor mg-tp"><strong class="strong">Read by:</strong> <%= book.first_name %> <%= book.last_name %></p>
+    
+                                        <p class="read-more newColor"><a href="/visitor-display/<%= book.source_table %>/<%= book.id %>?currentPage=visitProfile" class="yellow">Read notes on this book</a> 
+                                            <% if (book.source_table === "with_isbn") { %> 
+                                                or see more details on <a href="https://www.amazon.com/s?k=<%= book.isbn %>" target="_blank" class="yellow">Amazon</a>
+                                            <% } %>
+                                        </p>
+                                    </div>
+                                </div>
+    
+                                <p class="summary"> <%= book.summary ? book.summary : "No summary available" %> </p>
+                            </div>
+                        <% }); %>
+                    <% } %>
+                <% } else { %>  
+                    <p style="color: red;" class="noDisplay"> This user doesn't have any Book yet! </p>
+                <% } %>
+
+                <!-- Display sorted books -->
+                <div id="sorted-books">
+                        
+                </div>
+            </div> 
+            
+        </div>
+    </main>
+
+<%- include("partials/footer.ejs") %>
