@@ -5,7 +5,9 @@
 
 Most times we all read books and after reading, in subsequent times we literally forget all the most important parts or key aspects of each book.
 
-This project focuses on helping users to document individual reading journey, allowing them to store books they read, along with taking personal notes, summaries and ratings.
+This project focuses on helping users to document individual reading journey, allowing them to store books they read, along with taking personal notes, summaries and ratings.  
+
+While building this project, i gained deep understanding on various concepts and dependencies which further sharpened my problem solving skills.
 
 
 ## Key Features
