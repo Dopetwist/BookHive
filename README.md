@@ -3,6 +3,8 @@
 
 ## Project Overview
 
+I built this web app to help users keep track of their reading history.
+
 Most times we all read books and after reading, in subsequent times we literally forget all the most important parts or key aspects of each book.
 
 This project focuses on helping users to document individual reading journey, allowing them to store books they read, along with taking personal notes, summaries and ratings.  
