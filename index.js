@@ -772,7 +772,7 @@ app.get("/selected-user/:id", async (req, res) => {
 app.post("/search", async (req, res) => {
 
   const searchInput = req.body.search.trim();
-  const nameParts = searchInput.split(" "); // Splits input by space
+  const nameParts = searchInput.split(" "); // Split input by space
 
 
   try {
