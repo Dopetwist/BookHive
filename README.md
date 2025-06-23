@@ -20,13 +20,18 @@ While building this project, i gained deep understanding on various concepts and
 ✅ Feedback Feature - Feedbacks or requests can be sent effortlessly.  
 ✅ Sorting of Books by Title, Recency and Rating.
 
+# Run the App.
+
+Clone this repo.
 
 ## Installation
 
 On the node terminal, use the command `npm i` to install all dependencies.
 
 ## Running the Server
-Use `nodemon index.js` to start the server.
+Use `nodemon index.js` to start the server.   
+
+Open `http://localhost:3000` in your browser.
 
 
 ## 🛠️ Tech Stack used 
