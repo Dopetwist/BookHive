@@ -20,7 +20,19 @@ While building this project, i gained deep understanding on various concepts and
 ✅ Feedback Feature - Feedbacks or requests can be sent effortlessly.  
 ✅ Sorting of Books by Title, Recency and Rating.
 
-# Run the App.
+
+## 🛠️ Tech Stack used 
+
+• Node.js  
+• Express.js  
+• PostgreSQL  
+• JavaScript  
+• EJS (templating engine)  
+• HTML  
+• CSS
+
+
+## Run the App.
 
 Clone this repo.
 
@@ -32,17 +44,6 @@ On the node terminal, use the command `npm i` to install all dependencies.
 Use `nodemon index.js` to start the server.   
 
 Open `http://localhost:3000` in your browser.
-
-
-## 🛠️ Tech Stack used 
-
-• Node.js  
-• Express.js  
-• PostgreSQL  
-• JavaScript  
-• EJS (templating engine)  
-• HTML  
-• CSS
 
 
 ## Contributing
