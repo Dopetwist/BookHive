@@ -38,6 +38,8 @@ Clone this repo
 
   `https://github.com/Dopetwist/BookHive.git`
 
+cd `BookHive`
+
 ## Installation
 
 On the node terminal, use the command `npm install` to install all dependencies.
