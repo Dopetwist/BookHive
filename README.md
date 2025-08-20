@@ -34,11 +34,13 @@ While building this project, i gained deep understanding on various concepts and
 
 ## Run the App.
 
-Clone this repo.
+Clone this repo  
+
+  `https://github.com/Dopetwist/BookHive.git`
 
 ## Installation
 
-On the node terminal, use the command `npm i` to install all dependencies.
+On the node terminal, use the command `npm install` to install all dependencies.
 
 ## Running the Server
 Use `nodemon index.js` to start the server.   
