@@ -599,20 +599,19 @@ p.add-error {
 #changeBtn, #uploadBtn {
     margin: 0.5rem 0;
     font-size: 0.8rem;
-    background: #008080;
+    background: #20b2aa;
     color: #fff;
-    border: 0.2rem solid #008080;
+    border: none;
     outline: none;
-    padding: 0.1rem 0.4rem;
+    padding: 0.3rem 0.5rem;
     border-radius: 0.5rem;
     transition: .2s ease;
 }
 
 #changeBtn:hover, #uploadBtn:hover {
     cursor: pointer;
-    background-color: #fff;
-    color: #008080;
-    border: 0.2rem solid #008080;
+    background-color: #008080;
+    color: #fff;
 }
 
 #uploadBtn {
@@ -1191,11 +1190,11 @@ a.edit-btn {
 
 #done {
     font-size: 0.85rem;
-    background: #008080;
+    background: #20b2aa;
     color: #fff;
-    border: 0.2rem solid #008080;
+    border: none;
     outline: none;
-    padding: 0.1rem 0.4rem;
+    padding: 0.2rem 0.5rem;
     margin-right: 1.3rem;
     border-radius: 0.5rem;
     transition: .2s ease;
@@ -1203,16 +1202,15 @@ a.edit-btn {
 
 #done:hover {
     cursor: pointer;
-    background-color: #fff;
-    color: #008080;
-    border: 0.2rem solid #008080;
+    background-color: #008080;
+    color: #fff;
 }
 
 #cancel {
     font-size: 0.9rem;
     background: #fff;
     color: #008080;
-    border: 0.2rem solid #008080;
+    border: 0.15rem solid #20b2aa;
     outline: none;
     padding: 0.1rem 1.5rem;
     border-radius: 0.5rem;
@@ -1222,13 +1220,9 @@ a.edit-btn {
 
 #cancel:hover {
     cursor: pointer;
-    background-color: #008080;
+    background-color: #20b2aa;
     color: #fff;
-    border: 0.2rem solid #008080;
-}
-
-#bio-form {
-    background-color: #0000ff;
+    border: 0.15rem solid #20b2aa;
 }
 
 #bio-field {
@@ -1237,7 +1231,7 @@ a.edit-btn {
     font-family: "Poppins", serif;
     resize: none;
     background-color: #fff;
-    box-shadow: 0 0 0.3rem #0000ff;
+    box-shadow: 0 0 0.3rem #008080;
     border-radius: 0.5rem;
     padding: 1rem 0.6rem;
     margin-bottom: 0.7rem;
@@ -1346,7 +1340,7 @@ a.edit-btn {
     position: absolute;
     width: 60%;
     padding: 2rem 1rem;
-    background-color: #add8e6;
+    background-color: #d3d3d3;
     border-radius: 1rem;
     box-shadow: 0 0 1rem #000;
     z-index: 100;
@@ -1374,7 +1368,7 @@ a.edit-btn {
     margin-top: 0.3rem;
     border-radius: 0.5rem;
     border: 0.15rem solid #808080;
-    outline-color: #000080;
+    outline-color: #008080;
     padding: 0.4rem 0.5rem;
 }
 
@@ -1573,7 +1567,7 @@ a.edit-btn {
     border-radius: 1rem;
     padding: 1rem;
     margin: 1rem 0;
-    outline-color: #0000ff;
+    outline-color: #008080;
     resize: none;
 }
 

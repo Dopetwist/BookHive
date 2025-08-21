@@ -590,7 +590,7 @@ app.get("/forgot", (req, res) => {
 
 // Change Password Page
 app.get("/change-pass", (req, res) => {
-  console.log(req.user);
+  // console.log(req.user);
 
   if (req.isAuthenticated()) {
     res.render("change.ejs", { formData: {} });
