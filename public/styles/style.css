@@ -1425,8 +1425,8 @@ a.edit-btn {
 #back-to-top {
     display: none;
     position: fixed;
-    bottom: 3rem;
-    right: 5rem;
+    bottom: 8%;
+    right: 5%;
     padding: 0.3rem;
     border: none;
     outline: none;
@@ -1866,7 +1866,7 @@ footer {
     }
 
     p.logError {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .loader {
