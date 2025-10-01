@@ -1610,6 +1610,7 @@ footer {
 
     .container .head-texts h1.home {
         font-size: 2rem;
+        margin-bottom: 0.5rem;
     }
 
     .container .head-texts h2.home {
@@ -1630,15 +1631,19 @@ footer {
     }
 
     .drop-outer {
-        width: 30%;
+        width: 50%;
         padding: 0.1rem;
         border-radius: 0.7rem;
     }
 
     .dropdown-menu a {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         padding-left: 0.7rem;
         border-radius: 0.7rem;
+    }
+
+    section#login {
+        flex-direction: column;
     }
 
     .book-details {
@@ -1690,14 +1695,18 @@ footer {
         margin-bottom: 3rem;
     }
 
+    .explanation {
+        text-align: left;
+    }
+
     .explanation, .join-text {
         font-size: 0.9rem;
-        line-height: 1.9;
+        line-height: 1.6;
     }
 
     .action-texts p {
         width: 80%;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         line-height: 1.7;
         text-align: center;
     }
@@ -1767,7 +1776,7 @@ footer {
 
     .summary {
         font-size: 0.9rem;
-        line-height: 1.7;
+        line-height: 1.6;
     }
 
     .book-cover {
@@ -1806,7 +1815,7 @@ footer {
     }
 
     #new, #edit-form {
-        width: 80%;
+        width: 90%;
         padding: 1rem;
     }
 
@@ -1854,7 +1863,8 @@ footer {
     }
 
     #log-form {
-        width: 70%;
+        width: 80%;
+        margin-top: 3rem;
     }
 
     .login p.log {
@@ -1863,6 +1873,7 @@ footer {
 
     .log-back-arrow {
         font-size: 1.5rem;
+        width: max-content;
     }
 
     p.logError {
@@ -1895,6 +1906,10 @@ footer {
         font-size: 1.4rem;
     }
 
+    .register {
+        padding-top: 10%;
+    }
+
     .register, .reset {
         width: 100%;
     }
@@ -1920,7 +1935,7 @@ footer {
         font-size: 0.8rem;
     }
 
-    #reset-form, .delete {
+    #reset-form, #reg-form, .delete {
         width: 80%;
     }
 
@@ -1994,7 +2009,7 @@ footer {
 
     p.user-bio-text, #bio-field {
         font-size: 0.9rem;
-        line-height: 1.6;
+        line-height: 1.5;
     }
 
     #done {
