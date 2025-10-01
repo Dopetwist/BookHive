@@ -17,6 +17,8 @@
 
             //Function to apply theme
             function applyTheme (themeMode) {
+                const toggleButton = document.getElementById("toggle-button");
+                 
                 if (themeMode === "dark") {
                     document.documentElement.setAttribute("data-theme", themeMode); // Set theme attribute
                     toggleButton.classList.remove("bx-toggle-left");
