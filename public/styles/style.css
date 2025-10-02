@@ -1323,8 +1323,6 @@ a.edit-btn {
 
 .feedback-loader, .log-loader {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 .feedback-con {

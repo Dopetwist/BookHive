@@ -9,7 +9,6 @@ const router = express.Router();
 
 // POST route for feedback
 router.post('/send-feedback', async (req, res) => {
-    console.log(req.body);
     
     const { name, email, message } = req.body;
 
@@ -31,8 +30,8 @@ router.post('/send-feedback', async (req, res) => {
         const mailOptions = {
             from: email,
             to: process.env.RECEIVER_EMAIL,  // Email to receive feedback
-            subject: `New Feedback from Book Notes App`,
-            text: `Name: ${name}\nEmail: ${email}\n\nMessage: \n${message}`
+            subject: `New Feedback from BookHive`,
+            text: `Name: ${name}\nEmail: ${email}\n\nMessage: \n\n${message}`
         }; 
 
         // Send email
