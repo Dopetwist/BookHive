@@ -145,10 +145,16 @@ document.addEventListener("DOMContentLoaded", () => {
             await axios.post("/feedback/send-feedback", { name, email, message });
             feedbackMessage.textContent = "Feedback sent successfully! ✅"; // Show success message
             feedbackMessage.style.color = "green";
+            setTimeout(() => {
+                feedbackMessage.textContent = "";
+            }, 3000);
         } catch (error) {
             feedbackMessage.textContent = "Failed to send feedback. Try again.";
             feedbackMessage.style.color = "red";
             console.error("Failed to send feedback:", error);
+            setTimeout(() => {
+                feedbackMessage.textContent = "";
+            }, 3000);
         } finally {
             loader.style.display = "none";
             feedBtn.disabled = false;
@@ -477,6 +483,9 @@ document.addEventListener("DOMContentLoaded", () => {
     newFeedbackButton.addEventListener("click", () => {
         if (isHamburgerVisible()) {
             feedbackDisplay();
+            document.querySelector(".float-nav-links").classList.remove("active");
+            document.getElementById("newBackdrop").classList.remove("alive");
+            menuIcon.classList.remove("bx-x");
         }
     });
 });
