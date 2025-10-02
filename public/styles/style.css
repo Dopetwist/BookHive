@@ -2062,7 +2062,7 @@ footer {
     }
 
     #feedback-form {
-        max-width: 90%;
+        width: 80%;
         z-index: 100;
     }
 

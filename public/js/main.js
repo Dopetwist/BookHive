@@ -477,6 +477,9 @@ document.addEventListener("DOMContentLoaded", () => {
     newFeedbackButton.addEventListener("click", () => {
         if (isHamburgerVisible()) {
             feedbackDisplay();
+            document.querySelector(".float-nav-links").classList.remove("active");
+            document.getElementById("newBackdrop").classList.remove("alive");
+            menuIcon.classList.remove("bx-x");
         }
     });
 });
