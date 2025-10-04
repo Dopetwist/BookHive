@@ -378,6 +378,7 @@ function isHamburgerVisible() {
     return window.getComputedStyle(menuIcon).display === 'block';
 }
 
+
 function newApplyTheme (themeMode) {
     if (themeMode === "dark") {
         document.documentElement.setAttribute("data-theme", themeMode); // Set theme attribute
