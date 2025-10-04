@@ -2108,6 +2108,10 @@ footer {
 /* =============================================================================== */
 
 @media (min-width: 480px) and (max-width: 767px) {
+
+    section#login {
+        flex-direction: column;
+    }
     
     #log-main {
         padding: 0 3%;
@@ -2368,7 +2372,13 @@ footer {
     }
 
     #log-form {
-        width: 60%;
+        width: 70%;
+        margin-top: 3rem;
+    }
+
+    .log-back-arrow {
+        font-size: 1.5rem;
+        width: max-content;
     }
 
     .login p.log {
