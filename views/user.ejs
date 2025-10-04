@@ -24,10 +24,10 @@
                 <div class="bio-con">
                     <form action="/bio" method="POST" id="bio-form">
                         <label for="bio">Briefly write about yourself.</label>
-                        <textarea name="bio" id="bio" rows="20" placeholder="Your Description..."></textarea>
+                        <textarea name="bio" id="bio" rows="12" placeholder="Your Description..."></textarea>
     
                         <button type="submit">Submit</button>
-                        <a href="#" id="bio-close"><button>Close</button></a>
+                        <a href="#" id="bio-close">Close</a>
                     </form>
                 </div>
             </section>
@@ -93,7 +93,7 @@
                                         </p>
     
                                         <form action="/bio" method="POST" id="edit-bio" hidden>
-                                            <textarea name="bio" id="bio-field"> <%= user.bio %> </textarea>
+                                            <textarea name="bio" id="bio-field" rows="9"> <%= user.bio %> </textarea>
                     
                                             <button type="submit" id="done">Save changes</button>
                                             <a href="#" id="cancel">Cancel</a>

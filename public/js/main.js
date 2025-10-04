@@ -378,6 +378,7 @@ function isHamburgerVisible() {
     return window.getComputedStyle(menuIcon).display === 'block';
 }
 
+
 function newApplyTheme (themeMode) {
     if (themeMode === "dark") {
         document.documentElement.setAttribute("data-theme", themeMode); // Set theme attribute
@@ -602,7 +603,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-              
+
+// Prevent Page reload on click
+const cancelButton = document.getElementById("cancel");
+const bioButton = document.getElementById("bio-close");
+
+cancelButton.addEventListener("click", (event) => {
+    event.preventDefault();
+});
+
+bioButton.addEventListener("click", (event) => {
+    event.preventDefault();
+});
 
             
 
