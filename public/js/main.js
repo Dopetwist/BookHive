@@ -603,7 +603,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-              
+
+// Prevent Page reload on click
+const cancelButton = document.getElementById("cancel");
+const bioButton = document.getElementById("bio-close");
+
+cancelButton.addEventListener("click", (event) => {
+    event.preventDefault();
+});
+
+bioButton.addEventListener("click", (event) => {
+    event.preventDefault();
+});
 
             
 
