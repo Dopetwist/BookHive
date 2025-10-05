@@ -121,6 +121,10 @@ main {
     margin-bottom: 2rem;
 }
 
+main#reg-main {
+    padding-top: 2rem;
+}
+
 .container {
     padding-top: 1rem;
     margin-top: 2rem;
@@ -770,6 +774,7 @@ section#login {
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .login {
@@ -778,6 +783,7 @@ section#login {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 3rem;
 }
 
 .log-btn {
@@ -808,6 +814,7 @@ section#login {
 
 .log-back-arrow {
     font-size: 2rem;
+    width: max-content;
 }
 
 .login p.log {
@@ -1646,10 +1653,6 @@ footer {
         border-radius: 0.7rem;
     }
 
-    section#login {
-        flex-direction: column;
-    }
-
     .book-details {
         margin-bottom: 3rem;
     }
@@ -1868,7 +1871,6 @@ footer {
 
     #log-form {
         width: 80%;
-        margin-top: 3rem;
     }
 
     .login p.log {
@@ -1877,7 +1879,6 @@ footer {
 
     .log-back-arrow {
         font-size: 1.5rem;
-        width: max-content;
     }
 
     p.logError {
@@ -1910,8 +1911,8 @@ footer {
         font-size: 1.4rem;
     }
 
-    .register {
-        padding-top: 10%;
+    #change-form input, #delete-form input, #reset-form input {
+        width: 100%;
     }
 
     .register, .reset {
@@ -1999,8 +2000,14 @@ footer {
         font-size: 1rem;
     }
 
+    .user-btn-con {
+        flex-direction: column;
+        margin-top: 3rem;
+    }
+
     .user-btn-con a {
         font-size: 0.9rem;
+        margin-right: 0;
     }
 
     .user-btn-con a i {
@@ -2008,7 +2015,8 @@ footer {
     }
     
     .add-button {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+        margin-top: 2rem;
     }
 
     p.user-bio-text, #bio-field {
@@ -2108,10 +2116,6 @@ footer {
 /* =============================================================================== */
 
 @media (min-width: 480px) and (max-width: 767px) {
-
-    section#login {
-        flex-direction: column;
-    }
     
     #log-main {
         padding: 0 3%;
@@ -2311,6 +2315,10 @@ footer {
         font-size: 1.5rem;
     }
 
+    .add-btns, .edit-btns {
+        width: 80%;
+    }
+
     .bottom-back {
         font-size: 0.95rem;
         margin-top: 0.8rem;
@@ -2373,12 +2381,10 @@ footer {
 
     #log-form {
         width: 70%;
-        margin-top: 3rem;
     }
 
     .log-back-arrow {
         font-size: 1.5rem;
-        width: max-content;
     }
 
     .login p.log {
@@ -2387,6 +2393,10 @@ footer {
 
     p.already, p.logError {
         font-size: 0.9rem;
+    }
+
+    #change-form input, #delete-form input, #reset-form input {
+        width: 100%;
     }
 
     #feedback-form p.get {
@@ -2414,8 +2424,12 @@ footer {
         font-size: 0.8rem;
     }
 
+    .user-btn-con {
+        justify-content: space-between;
+    }
+
     .register p.reg, .delete p.del-p, .change-p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .delete, .change {
@@ -2486,7 +2500,7 @@ footer {
     }
     
     .add-button {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 
     p.user-bio-text, #bio-field {
@@ -2578,7 +2592,8 @@ footer {
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .container .head-texts h1.home {
-        font-size: 2.5rem;
+        font-size: 2.1rem;
+        margin-bottom: 1rem;
     }
 
     .container .head-texts h2.home {
@@ -2650,6 +2665,10 @@ footer {
 
     #new, #edit-form {
         max-width: 80%;
+    }
+
+    .add-btns, .edit-btns {
+        width: 80%;
     }
 
     .book-p {
@@ -2726,7 +2745,11 @@ footer {
     }
 
     #log-form {
-        max-width: 40%;
+        max-width: 60%;
+    }
+
+    .login {
+        margin-top: 3rem;
     }
 
     .login p.log {
@@ -2763,6 +2786,10 @@ footer {
 
     p.already, p.logError {
         font-size: 0.9rem;
+    }
+
+    .delete, .reset {
+        width: 80%;
     }
 
     .feedback-con {
