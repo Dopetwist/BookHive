@@ -32,7 +32,7 @@ While building this project, i gained deep understanding on various concepts and
 • CSS
 
 
-## Run the App.
+## 🚀 Run the App.
 
 Clone this repo  
 
@@ -50,6 +50,6 @@ Use `nodemon index.js` to start the server.
 Open `http://localhost:3000` in your browser.
 
 
-## Contributing
+## 🤝 Contributing
 
 Pull requests and collaborations are welcome. For major changes, please open an issue first.
