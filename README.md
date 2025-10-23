@@ -12,7 +12,7 @@ This project focuses on helping users to document individual reading journey, al
 While building this project, i gained deep understanding on various concepts and dependencies which further sharpened my problem solving skills.
 
 
-## Key Features
+## 🔑 Key Features
 
 ✅ Secured Authentication of users login and account creation.  
 ✅ Search Feature - Adequately search for registered users to explore profiles and books.  
@@ -40,11 +40,11 @@ Clone this repo
 
 cd `BookHive`
 
-## Installation
+## ⚙️ Installation
 
 On the node terminal, use the command `npm install` to install all dependencies.
 
-## Running the Server
+## 🎲 Running the Server
 Use `nodemon index.js` to start the server.   
 
 Open `http://localhost:3000` in your browser.
