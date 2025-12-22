@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // Update the profile picture dynamically
             document.getElementById("profile-img").src = response.data.profilePicture;
-            // fileInput.style.display = "none";
             uploadBtn.style.display = "none";
             changeBtn.style.display = "block";
             
@@ -108,13 +107,13 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault(); // Prevent page reload
 
         const uploadBtn = document.getElementById("uploadBtn");
-        const changeBtn = document.getElementById("changeBtn");
-        const fileInput = document.getElementById("change-file-input");
+        const deleteBtn = document.getElementById("deleteBtn");
+        // const fileInput = document.getElementById("change-file-input");
         const loader = document.getElementById("loader");
 
         // Show loader and disable button
         loader.style.display = "block";
-        changeBtn.disabled = true;
+        deleteBtn.disabled = true;
 
     
         try {
@@ -122,18 +121,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             document.getElementById("profile-img").src = '/uploads/default.png';
 
-            fileInput.click();
-    
-            // fileInput.style.display = "block";
             uploadBtn.style.display = "block";
-            changeBtn.style.display = "none";
+            deleteBtn.style.display = "none";
         } catch (error) {
             console.error(error);
             alert("Failed to remove profile picture.");
         } finally {
             // Hide loader and enable button
             loader.style.display = "none";
-            changeBtn.disabled = false;
+            deleteBtn.disabled = false;
         }
     });
 });

@@ -879,7 +879,7 @@ app.post("/pic-delete", async (req, res) => {
       res.status(500).json({ error: "Failed to remove profile picture." });
     }
   } else {
-    res.redirect("/login-form"); 
+    res.redirect("/login-form");
   }
 });
 
