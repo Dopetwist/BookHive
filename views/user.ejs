@@ -74,9 +74,11 @@
                             <div class="picture-btns">
                                 <button id="changeBtn">Change Picture</button>
 
-                                <form id="pic-delete-form">
-                                    <button type="submit" id="deleteBtn">Delete</button>
-                                </form>
+                                <% if (user.profile_picture != "/uploads/default.png") { %> 
+                                    <form id="pic-delete-form">
+                                        <button type="submit" id="deleteBtn">Delete</button>
+                                    </form>
+                                <% } %> 
                             </div>
                             
                             <!-- Loader  -->
