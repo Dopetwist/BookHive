@@ -51,35 +51,48 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Trigger image file picker
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("uploadBtn").addEventListener("click", () => {
+        const fileInput = document.getElementById("file-input");
+
+        fileInput.click();
+    });
+});
+
 
 //Dynamically upload profile picture without page reload
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+    document.getElementById("file-input").addEventListener("change", async (e) => {
         e.preventDefault(); // Prevent page reload
     
         const formData = new FormData();
         const fileInput = document.getElementById("file-input");
+        const file = fileInput.files[0];
         const loader = document.getElementById("loader");
 
         const uploadBtn = document.getElementById("uploadBtn");
         const changeBtn = document.getElementById("changeBtn");
     
-        formData.append("profile-img", fileInput.files[0]);
+        formData.append("profile-img", file);
 
         // Show loader and disable button
         loader.style.display = "block";
         uploadBtn.disabled = true;
+
     
         try {
+    
             const response = await axios.post("/upload-picture", formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
-    
+            
             // Update the profile picture dynamically
             document.getElementById("profile-img").src = response.data.profilePicture;
-            fileInput.style.display = "none";
+            // fileInput.style.display = "none";
             uploadBtn.style.display = "none";
             changeBtn.style.display = "block";
+            
         } catch (error) {
             console.error(error);
             alert("Failed to upload profile picture.");
@@ -96,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const uploadBtn = document.getElementById("uploadBtn");
         const changeBtn = document.getElementById("changeBtn");
-        const fileInput = document.getElementById("file-input");
+        const fileInput = document.getElementById("change-file-input");
         const loader = document.getElementById("loader");
 
         // Show loader and disable button
@@ -108,8 +121,10 @@ document.addEventListener("DOMContentLoaded", () => {
             await axios.post("/pic-delete");
 
             document.getElementById("profile-img").src = '/uploads/default.png';
+
+            fileInput.click();
     
-            fileInput.style.display = "block";
+            // fileInput.style.display = "block";
             uploadBtn.style.display = "block";
             changeBtn.style.display = "none";
         } catch (error) {

@@ -1529,7 +1529,7 @@ a.edit-btn {
     background-color: #ffebcd;
 }
 
-#file-input {
+#file-input, #change-file-input {
     width: 80%;
     background-color: transparent;
     border: 0.1rem solid #d3d3d3;
