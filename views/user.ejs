@@ -71,14 +71,24 @@
                                 <input type="file" name="profile_picture" accept="image/*" id="file-input" hidden>
                             </form>
 
-                            <div class="picture-btns">
-                                <button id="changeBtn">Change Picture</button>
+                            <button id="editBtn">Edit</button>
 
-                                <% if (user.profile_picture !== null) { %> 
-                                    <form id="pic-delete-form">
-                                        <button type="submit" id="deleteBtn">Delete</button>
-                                    </form>
-                                <% } %> 
+                            <div class="buttons-container">
+                                <div class="buttons-inner-con">
+                                    <div class="close">
+                                        <button>X</button>
+                                    </div>
+                                    
+                                    <p>What action do you want to take on the picture?</p>
+
+                                    <div class="picture-btns">
+                                        <button id="changeBtn">Change</button>
+
+                                        <form id="pic-delete-form">
+                                            <button type="submit" id="deleteBtn">Delete</button>
+                                        </form> 
+                                    </div>
+                                </div>
                             </div>
                             
                             <!-- Loader  -->
@@ -190,24 +200,24 @@
         <script>
        
             //Remove file input field when user sets profile picture
-            const profilePic = "<%= profilePicture %>";
+            // const profilePic = ;
 
-            function fileButton() {
+            // function fileButton() {
 
-                const uploadBtn = document.getElementById("uploadBtn");
-                const changeBtn = document.getElementById("changeBtn");
+            //     const uploadBtn = document.getElementById("uploadBtn");
+            //     const changeBtn = document.getElementById("changeBtn");
 
-                if (profilePic && profilePic !== "null") {
-                    uploadBtn.style.display = "none";
-                    changeBtn.style.display = "block";
-                } else {
-                    uploadBtn.style.display = "block";
-                    changeBtn.style.display = "none";
-                }
-            }
+            //     if (profilePic && profilePic !== "null") {
+            //         uploadBtn.style.display = "none";
+            //         changeBtn.style.display = "block";
+            //     } else {
+            //         uploadBtn.style.display = "block";
+            //         changeBtn.style.display = "none";
+            //     }
+            // }
 
         
-            window.onload = fileButton; //Run the function on page load
+            // window.onload = fileButton; //Run the function on page load
 
             // Bio field displays
             const addBio = document.getElementById("get-bio");
