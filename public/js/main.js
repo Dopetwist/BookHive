@@ -51,6 +51,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Close functionality for buttons container
+document.querySelector(".close").addEventListener("click", () => {
+    document.querySelector(".buttons-container").style.display = "none";
+});
+
+//Edit button functionality
+document.getElementById("editBtn").addEventListener("click", () => {
+    document.querySelector(".buttons-container").style.display = "block";
+});
+
 // Trigger image file picker
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("uploadBtn").addEventListener("click", () => {
@@ -72,8 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const loader = document.getElementById("loader");
 
         const uploadBtn = document.getElementById("uploadBtn");
-        const changeBtn = document.getElementById("changeBtn");
-        const deleteBtn = document.getElementById("deleteBtn");
+        const editBtn = document.getElementById("editBtn");
     
         formData.append("profile-img", file);
 
@@ -91,12 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
             // Update the profile picture dynamically
             document.getElementById("profile-img").src = response.data.profilePicture;
             uploadBtn.style.display = "none";
-            changeBtn.style.display = "block";
-            deleteBtn.style.display = "block";
+            editBtn.style.display = "block";
             
         } catch (error) {
             console.error(error);
-            alert("Failed to upload profile picture.");
+            // alert("Failed to upload profile picture.");
         } finally {
             // Hide loader and enable button
             loader.style.display = "none";
@@ -119,33 +127,34 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("pic-delete-form").addEventListener("submit", async (e) => {
         e.preventDefault(); // Prevent page reload
 
+        const container = document.querySelector(".buttons-container");
         const uploadBtn = document.getElementById("uploadBtn");
-        const changeBtn = document.getElementById("changeBtn");
-        const deleteBtn = document.getElementById("deleteBtn");
+        const editBtn = document.getElementById("editBtn");
         const loader = document.getElementById("loader");
 
         // Show loader and disable button
         loader.style.display = "block";
-        changeBtn.disabled = true;
-        deleteBtn.disabled = true;
 
     
         try {
+
             await axios.post("/pic-delete");
 
             document.getElementById("profile-img").src = '/uploads/default.png';
 
+            container.style.display = "none";
+
             uploadBtn.style.display = "block";
-            changeBtn.style.display = "none";
-            deleteBtn.style.display = "none";
+            editBtn.style.display = "none";
         } catch (error) {
             console.error(error);
             alert("Failed to remove profile picture.");
         } finally {
             // Hide loader and enable button
             loader.style.display = "none";
-            changeBtn.disabled = false;
-            deleteBtn.disabled = false;
+            editBtn.disabled = false;
+            // changeBtn.disabled = false;
+            // deleteBtn.disabled = false;
         }
     });
 });
