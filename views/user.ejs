@@ -64,13 +64,22 @@
                                     <img src="<%= user.profile_picture ? user.profile_picture : '/uploads/default.png' %>" alt="Profile Picture" id="profile-img" loading="lazy" onerror="this.onerror=null; this.src='/uploads/default.png';">
                                 </figure>
                             </div>
+
+                            <button id="uploadBtn">Upload</button>
+
                             <form id="uploadForm" enctype="multipart/form-data">
-                                <input type="file" name="profile_picture" accept="image/*" id="file-input" required>
-                                <button type="submit" id="uploadBtn">Upload</button>
+                                <input type="file" name="profile_picture" accept="image/*" id="file-input" hidden>
                             </form>
-                            <form id="pic-delete-form">
-                                <button type="submit" id="changeBtn">Change Picture</button>
-                            </form>
+
+                            <div class="picture-btns">
+                                <button id="changeBtn">Change Picture</button>
+
+                                <% if (user.profile_picture !== null) { %> 
+                                    <form id="pic-delete-form">
+                                        <button type="submit" id="deleteBtn">Delete</button>
+                                    </form>
+                                <% } %> 
+                            </div>
                             
                             <!-- Loader  -->
                             <section id="webLoader">
@@ -185,16 +194,13 @@
 
             function fileButton() {
 
-                const fileInput = document.getElementById("file-input");
                 const uploadBtn = document.getElementById("uploadBtn");
                 const changeBtn = document.getElementById("changeBtn");
 
                 if (profilePic && profilePic !== "null") {
-                    fileInput.style.display = "none";
                     uploadBtn.style.display = "none";
                     changeBtn.style.display = "block";
                 } else {
-                    fileInput.style.display = "block";
                     uploadBtn.style.display = "block";
                     changeBtn.style.display = "none";
                 }

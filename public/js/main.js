@@ -51,35 +51,49 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Trigger image file picker
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("uploadBtn").addEventListener("click", () => {
+        const fileInput = document.getElementById("file-input");
+
+        fileInput.click();
+    });
+});
+
 
 //Dynamically upload profile picture without page reload
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+    document.getElementById("file-input").addEventListener("change", async (e) => {
         e.preventDefault(); // Prevent page reload
     
         const formData = new FormData();
         const fileInput = document.getElementById("file-input");
+        const file = fileInput.files[0];
         const loader = document.getElementById("loader");
 
         const uploadBtn = document.getElementById("uploadBtn");
         const changeBtn = document.getElementById("changeBtn");
+        const deleteBtn = document.getElementById("deleteBtn");
     
-        formData.append("profile-img", fileInput.files[0]);
+        formData.append("profile-img", file);
 
         // Show loader and disable button
         loader.style.display = "block";
         uploadBtn.disabled = true;
+
     
         try {
+    
             const response = await axios.post("/upload-picture", formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
-    
+            
             // Update the profile picture dynamically
             document.getElementById("profile-img").src = response.data.profilePicture;
-            fileInput.style.display = "none";
             uploadBtn.style.display = "none";
             changeBtn.style.display = "block";
+            deleteBtn.style.display = "block";
+            
         } catch (error) {
             console.error(error);
             alert("Failed to upload profile picture.");
@@ -90,28 +104,40 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Trigger image file picker
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("changeBtn").addEventListener("click", () => {
+            const fileInput = document.getElementById("file-input");
+
+            console.log("Button clicked");
+
+            fileInput.click();
+        });
+    });
+
     //Dynamically remove profile picture without page reload
     document.getElementById("pic-delete-form").addEventListener("submit", async (e) => {
         e.preventDefault(); // Prevent page reload
 
         const uploadBtn = document.getElementById("uploadBtn");
         const changeBtn = document.getElementById("changeBtn");
-        const fileInput = document.getElementById("file-input");
+        const deleteBtn = document.getElementById("deleteBtn");
         const loader = document.getElementById("loader");
 
         // Show loader and disable button
         loader.style.display = "block";
         changeBtn.disabled = true;
+        deleteBtn.disabled = true;
 
     
         try {
             await axios.post("/pic-delete");
 
             document.getElementById("profile-img").src = '/uploads/default.png';
-    
-            fileInput.style.display = "block";
+
             uploadBtn.style.display = "block";
             changeBtn.style.display = "none";
+            deleteBtn.style.display = "none";
         } catch (error) {
             console.error(error);
             alert("Failed to remove profile picture.");
@@ -119,6 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Hide loader and enable button
             loader.style.display = "none";
             changeBtn.disabled = false;
+            deleteBtn.disabled = false;
         }
     });
 });

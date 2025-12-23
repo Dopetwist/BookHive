@@ -600,8 +600,7 @@ p.add-error {
     flex-direction: column;
 }
 
-#changeBtn, #uploadBtn {
-    margin: 0.5rem 0;
+#changeBtn, #uploadBtn, #deleteBtn {
     font-size: 0.8rem;
     background: #20b2aa;
     color: #fff;
@@ -612,7 +611,9 @@ p.add-error {
     transition: .2s ease;
 }
 
-#changeBtn:hover, #uploadBtn:hover {
+#changeBtn:hover, 
+#uploadBtn:hover,
+#deleteBtn:hover {
     cursor: pointer;
     background-color: #008080;
     color: #fff;
@@ -622,8 +623,9 @@ p.add-error {
     margin-top: 0.3rem;
 }
 
-#changeBtn:hover, #uploadBtn:hover, #file-input:hover {
-    cursor: pointer;
+#deleteBtn {
+    /* display: none; */
+    margin-left: 0.5rem;
 }
 
 .display-user {
@@ -1529,7 +1531,7 @@ a.edit-btn {
     background-color: #ffebcd;
 }
 
-#file-input {
+#file-input, #change-file-input {
     width: 80%;
     background-color: transparent;
     border: 0.1rem solid #d3d3d3;
@@ -1547,6 +1549,13 @@ a.edit-btn {
     width: 70%;
     position: relative;
     float: right;
+}
+
+.picture-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
 }
 
 #bio-form {
@@ -1985,6 +1994,9 @@ footer {
 
     #changeBtn, #uploadBtn {
         font-size: 0.7rem;
+    }
+
+    .picture-btns {
         margin-bottom: 2rem;
     }
 
@@ -2480,6 +2492,9 @@ footer {
 
     #changeBtn, #uploadBtn {
         font-size: 0.7rem;
+    }
+
+    .picture-btns {
         margin-bottom: 2rem;
     }
 
