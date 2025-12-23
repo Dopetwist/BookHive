@@ -624,6 +624,7 @@ p.add-error {
 }
 
 #deleteBtn {
+    /* display: none; */
     margin-left: 0.5rem;
 }
 
@@ -2491,6 +2492,9 @@ footer {
 
     #changeBtn, #uploadBtn {
         font-size: 0.7rem;
+    }
+
+    .picture-btns {
         margin-bottom: 2rem;
     }
 
