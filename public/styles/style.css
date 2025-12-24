@@ -1561,6 +1561,7 @@ a.edit-btn {
 .buttons-container {
     position: relative;
     display: none;
+    z-index: 100;
 }
 
 .buttons-inner-con {

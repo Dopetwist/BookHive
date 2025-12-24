@@ -32,6 +32,24 @@
                 </div>
             </section>
 
+            <div class="buttons-container">
+                <div class="buttons-inner-con">
+                    <div class="close">
+                        <button><i class='bx bx-x'></i></button>
+                    </div>
+                                    
+                    <p>What action do you want to take on the picture?</p>
+
+                    <div class="picture-btns">
+                        <button id="changeBtn">Change</button>
+
+                        <form id="pic-delete-form">
+                            <button type="submit" id="deleteBtn">Delete</button>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+
             <div class="overlay-con">
                 <div class="cover-container">
                     <section id="head-shell">
@@ -72,24 +90,6 @@
                             </form>
 
                             <button id="editBtn">Edit</button>
-
-                            <div class="buttons-container">
-                                <div class="buttons-inner-con">
-                                    <div class="close">
-                                        <button><i class='bx bx-x'></i></button>
-                                    </div>
-                                    
-                                    <p>What action do you want to take on the picture?</p>
-
-                                    <div class="picture-btns">
-                                        <button id="changeBtn">Change</button>
-
-                                        <form id="pic-delete-form">
-                                            <button type="submit" id="deleteBtn">Delete</button>
-                                        </form> 
-                                    </div>
-                                </div>
-                            </div>
                             
                             <!-- Loader  -->
                             <section id="webLoader">
@@ -243,15 +243,15 @@
                 //Edit button functionality
                 editBtn.addEventListener("click", () => {
                     document.querySelector(".buttons-container").style.display = "block";
-                    document.body.style.overflow = "hidden";
-                    // userOverlay.classList.add("backdrop");
+                    userOverlay.classList.add("backdrop");
+                    // document.body.style.overflow = "hidden";
                 });
 
                 // Close functionality for buttons container
                 closeBtn.addEventListener("click", () => {
                     document.querySelector(".buttons-container").style.display = "none";
-                    document.body.style.overflow = "auto";
-                    // userOverlay.classList.remove("backdrop");
+                    userOverlay.classList.remove("backdrop");
+                    // document.body.style.overflow = "auto";
                 });
             });
         </script>
