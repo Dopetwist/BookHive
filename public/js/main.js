@@ -51,16 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Close functionality for buttons container
-document.querySelector(".close").addEventListener("click", () => {
-    document.querySelector(".buttons-container").style.display = "none";
-});
-
-//Edit button functionality
-document.getElementById("editBtn").addEventListener("click", () => {
-    document.querySelector(".buttons-container").style.display = "block";
-});
-
 // Trigger image file picker
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("uploadBtn").addEventListener("click", () => {
@@ -341,6 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!bioCon.contains(event.target) && !bioForm.contains(event.target)) {
             bioForm.style.display = "none";
+            document.body.style.overflow = "auto";
             overlay.classList.remove("backdrop");
         }
     });

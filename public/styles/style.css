@@ -623,8 +623,8 @@ p.add-error {
     color: #fff;
 }
 
-#uploadBtn {
-    margin-top: 0.3rem;
+#uploadBtn, #editBtn {
+    margin-top: 1rem;
 }
 
 #deleteBtn {
@@ -1249,6 +1249,10 @@ a.edit-btn {
     margin-bottom: 0.7rem;
 }
 
+.bio, #userBio {
+    width: fit-content;
+}
+
 .bio-text {
     width: 100%;
     padding: 1rem;
@@ -1587,14 +1591,20 @@ a.edit-btn {
 .close button {
     width: 100%;
     height: 100%;
-    font-size: 1rem;
     border-radius: 50%;
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .close button:hover {
     cursor: pointer;
     background-color: #d8d6d6;
+}
+
+.close button i {
+    font-size: 1.5rem;
 }
 
 #bio-form {

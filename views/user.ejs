@@ -76,7 +76,7 @@
                             <div class="buttons-container">
                                 <div class="buttons-inner-con">
                                     <div class="close">
-                                        <button>X</button>
+                                        <button><i class='bx bx-x'></i></button>
                                     </div>
                                     
                                     <p>What action do you want to take on the picture?</p>
@@ -223,17 +223,35 @@
             const addBio = document.getElementById("get-bio");
             const bioForm = document.getElementById("bio-form");
             const bioClose = document.getElementById("bio-close");
+            const closeBtn = document.querySelector(".close");
+            const editBtn = document.getElementById("editBtn");
             const userOverlay = document.querySelector(".overlay-con");
 
             document.addEventListener("DOMContentLoaded", () => {
                 addBio.addEventListener("click", () => {
                     bioForm.style.display = "block";
+                    document.body.style.overflow = "hidden";
                     userOverlay.classList.add("backdrop");
                 });
 
                 bioClose.addEventListener("click", () => {
                     bioForm.style.display = "none";
+                    document.body.style.overflow = "auto";
                     userOverlay.classList.remove("backdrop");
+                });
+
+                //Edit button functionality
+                editBtn.addEventListener("click", () => {
+                    document.querySelector(".buttons-container").style.display = "block";
+                    document.body.style.overflow = "hidden";
+                    // userOverlay.classList.add("backdrop");
+                });
+
+                // Close functionality for buttons container
+                closeBtn.addEventListener("click", () => {
+                    document.querySelector(".buttons-container").style.display = "none";
+                    document.body.style.overflow = "auto";
+                    // userOverlay.classList.remove("backdrop");
                 });
             });
         </script>
