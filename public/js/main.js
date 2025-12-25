@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const fileInput = document.getElementById("file-input");
         const file = fileInput.files[0];
         const loader = document.getElementById("loader");
+        const container = document.querySelector(".buttons-container");
 
         const uploadBtn = document.getElementById("uploadBtn");
         const editBtn = document.getElementById("editBtn");
@@ -82,6 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     
         try {
+            if (container) {
+                container.style.display = "none";
+            }
     
             const response = await axios.post("/upload-picture", formData, {
                 headers: { "Content-Type": "multipart/form-data" }
@@ -103,14 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Trigger image file picker
-    document.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("changeBtn").addEventListener("click", () => {
-            const fileInput = document.getElementById("file-input");
+    document.getElementById("changeBtn").addEventListener("click", () => {
+        const fileInput = document.getElementById("file-input");
 
-            console.log("Button clicked");
-
-            fileInput.click();
-        });
+        fileInput.click();
     });
 
     //Dynamically remove profile picture without page reload
