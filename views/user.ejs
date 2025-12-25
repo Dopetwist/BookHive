@@ -226,6 +226,7 @@
             const closeBtn = document.querySelector(".close");
             const editBtn = document.getElementById("editBtn");
             const userOverlay = document.querySelector(".overlay-con");
+            // const btnContainer = document.querySelector(".buttons-container");
 
             document.addEventListener("DOMContentLoaded", () => {
                 addBio.addEventListener("click", () => {
@@ -253,6 +254,10 @@
                     userOverlay.classList.remove("backdrop");
                     // document.body.style.overflow = "auto";
                 });
+
+                // btnContainer.addEventListener("click", (e) => {
+                //     e.stopPropagation(); // clicks inside container won't close overlay
+                // });
             });
         </script>
     </main>

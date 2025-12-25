@@ -98,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
             
         } catch (error) {
             console.error(error);
-            // alert("Failed to upload profile picture.");
         } finally {
             // Hide loader and enable button
             loader.style.display = "none";
@@ -143,8 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
             // Hide loader and enable button
             loader.style.display = "none";
             editBtn.disabled = false;
-            // changeBtn.disabled = false;
-            // deleteBtn.disabled = false;
         }
     });
 });
