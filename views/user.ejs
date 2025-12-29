@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="overlay-con">
+        
                 <div class="cover-container">
                     <section id="head-shell">
                         <div class="head-shell">
@@ -191,9 +191,10 @@
                         
                     </div>
                 </section>
-            </div> 
             
         </div>
+
+        <div class="overlay"></div>
 
 
         
@@ -225,8 +226,8 @@
             const bioClose = document.getElementById("bio-close");
             const closeBtn = document.querySelector(".close");
             const editBtn = document.getElementById("editBtn");
-            const userOverlay = document.querySelector(".overlay-con");
-            // const btnContainer = document.querySelector(".buttons-container");
+            const userOverlay = document.querySelector(".overlay");
+            const btnContainer = document.querySelector(".buttons-container");
 
             document.addEventListener("DOMContentLoaded", () => {
                 addBio.addEventListener("click", () => {
@@ -240,24 +241,20 @@
                     document.body.style.overflow = "auto";
                     userOverlay.classList.remove("backdrop");
                 });
+            });
 
-                //Edit button functionality
-                editBtn.addEventListener("click", () => {
-                    document.querySelector(".buttons-container").style.display = "block";
-                    userOverlay.classList.add("backdrop");
-                    // document.body.style.overflow = "hidden";
-                });
+            //Edit button functionality
+            editBtn.addEventListener("click", () => {
+                btnContainer.style.display = "block";
+                userOverlay.classList.add("backdrop");
+                document.body.style.overflow = "hidden";
+            });
 
-                // Close functionality for buttons container
-                closeBtn.addEventListener("click", () => {
-                    document.querySelector(".buttons-container").style.display = "none";
-                    userOverlay.classList.remove("backdrop");
-                    // document.body.style.overflow = "auto";
-                });
-
-                // btnContainer.addEventListener("click", (e) => {
-                //     e.stopPropagation(); // clicks inside container won't close overlay
-                // });
+            // Close functionality for buttons container
+            closeBtn.addEventListener("click", () => {
+                btnContainer.style.display = "none";
+                userOverlay.classList.remove("backdrop");
+                document.body.style.overflow = "auto";
             });
         </script>
     </main>
