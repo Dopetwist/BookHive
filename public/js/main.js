@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("mousedown", (event) => {
         const bioCon = document.querySelector(".bio-con");
         const bioForm = document.getElementById("bio-form");
-        const overlay = document.querySelector(".overlay-con");
+        const overlay = document.querySelector(".overlay");
 
 
         if (!bioCon.contains(event.target) && !bioForm.contains(event.target)) {
