@@ -886,14 +886,28 @@ app.post("/pic-delete", async (req, res) => {
 // ============================================================================================================
 
 // Login redirect
-app.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/profile",
-    failureRedirect: "/login-form",
-    failureFlash: true, // This enables flash messages on failure
-  })
-);
+app.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) return next(err);
+
+    // Failed login
+    if (!user) {
+      return res.render("login.ejs", {
+        error: info.message,
+        formData: {
+          email: req.body.username,
+        },
+      });
+    }
+
+    // Successful login
+    req.logIn(user, (err) => {
+      if (err) return next(err);
+      return res.redirect("/profile");
+    });
+  })(req, res, next);
+});
+
 
 // Register User
 app.post("/register", async (req, res) => {
