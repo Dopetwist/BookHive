@@ -72,8 +72,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const loader = document.getElementById("loader");
         const container = document.querySelector(".buttons-container");
 
+        const fileError = document.getElementById("send-error");
+
         const uploadBtn = document.getElementById("uploadBtn");
         const editBtn = document.getElementById("editBtn");
+
+        let errorTimeout;
     
         formData.append("profile-img", file);
 
@@ -98,6 +102,16 @@ document.addEventListener("DOMContentLoaded", () => {
             
         } catch (error) {
             console.error(error);
+
+            fileError.style.display = "block";
+
+            // Clear any previous Timeout
+            clearTimeout(errorTimeout);
+
+            // Hide error message after 5 seconds
+            errorTimeout = setTimeout(() => {
+                fileError.style.display = "none";
+            }, 5000);
         } finally {
             // Hide loader and enable button
             loader.style.display = "none";
