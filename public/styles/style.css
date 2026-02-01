@@ -1550,6 +1550,12 @@ a.edit-btn {
     cursor: pointer;
 }
 
+#send-error {
+    color: #ff0000;
+    display: none;
+    text-align: center;
+}
+
 .bio-con {
     display: flex;
     justify-content: flex-end;
