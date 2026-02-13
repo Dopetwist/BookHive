@@ -113,7 +113,7 @@ app.get("/", async (req, res) => {
             ORDER BY ab.created_at DESC
             `;
 
-    const result = await db.query(query); 
+    const result = await db.query(query);
     books = result.rows;
 
   
@@ -854,6 +854,9 @@ app.post("/upload-picture", upload.single("profile-img"), async (req, res) => {
   
     try {
       await db.query("UPDATE users SET profile_picture = $1 WHERE id = $2", [profilePicture, userId]);
+
+      req.user.profile_picture = profilePicture; // Update image on session
+
       res.json({ profilePicture });
     } catch (error) {
       console.error(error);
@@ -872,6 +875,8 @@ app.post("/pic-delete", async (req, res) => {
       const userId = req.user.id;
 
       await db.query("UPDATE users SET profile_picture = NULL WHERE id = $1", [userId]);
+
+      req.user.profile_picture = "NULL"; // Update image on session
 
       res.json({ message: "Profile picture removed successfully." }); // Sends success message to axios
     } catch (error) {
