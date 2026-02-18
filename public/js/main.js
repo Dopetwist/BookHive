@@ -10,23 +10,33 @@ const newFeedbackButton = document.getElementById("feedbackBtn");
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    const edit = document.getElementById("edit-icon");
+    const done = document.getElementById("done");
+    const cancel = document.getElementById("cancel");
+
     //Display Bio edit field
-    document.getElementById("edit-icon").addEventListener("click", () => {
-        document.querySelector(".user-bio-text").setAttribute("hidden", true);
-        document.getElementById("edit-bio").removeAttribute("hidden");
-    });
+    if (edit) {
+        edit.addEventListener("click", () => {
+            document.querySelector(".user-bio-text").setAttribute("hidden", true);
+            document.getElementById("edit-bio").removeAttribute("hidden");
+        });
+    }
 
     //Bio edit 'Save Changes' Button
-    document.getElementById("done").addEventListener("click", () => {
-        document.getElementById("edit-bio").setAttribute("hidden", true);
-        document.querySelector(".user-bio-text").removeAttribute("hidden");
-    });
+    if (done) {
+        done.addEventListener("click", () => {
+            document.getElementById("edit-bio").setAttribute("hidden", true);
+            document.querySelector(".user-bio-text").removeAttribute("hidden");
+        });
+    }
     
     //Bio edit 'Cancel' Button
-    document.getElementById("cancel").addEventListener("click", () => {
-        document.getElementById("edit-bio").setAttribute("hidden", true);
-        document.querySelector(".user-bio-text").removeAttribute("hidden");
-    });
+    if (cancel) {
+        cancel.addEventListener("click", () => {
+            document.getElementById("edit-bio").setAttribute("hidden", true);
+            document.querySelector(".user-bio-text").removeAttribute("hidden");
+        });
+    }
 });
 
 
@@ -53,111 +63,127 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Trigger image file picker
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("uploadBtn").addEventListener("click", () => {
-        const fileInput = document.getElementById("file-input");
+    const upload = document.getElementById("uploadBtn");
 
-        fileInput.click();
-    });
+    if (upload) {
+        upload.addEventListener("click", () => {
+            const fileInput = document.getElementById("file-input");
+
+            fileInput.click();
+        });
+    }
 });
 
 
 //Dynamically upload profile picture without page reload
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("file-input").addEventListener("change", async (e) => {
-        e.preventDefault(); // Prevent page reload
-    
-        const formData = new FormData();
-        const fileInput = document.getElementById("file-input");
-        const file = fileInput.files[0];
-        const loader = document.getElementById("loader");
-        const container = document.querySelector(".buttons-container");
+    const inputFile = document.getElementById("file-input");
 
-        const fileError = document.getElementById("send-error");
+    if (inputFile) {
+        inputFile.addEventListener("change", async (e) => {
+            e.preventDefault(); // Prevent page reload
+        
+            const formData = new FormData();
+            const fileInput = document.getElementById("file-input");
+            const file = fileInput.files[0];
+            const loader = document.getElementById("loader");
+            const container = document.querySelector(".buttons-container");
 
-        const uploadBtn = document.getElementById("uploadBtn");
-        const editBtn = document.getElementById("editBtn");
+            const fileError = document.getElementById("send-error");
 
-        let errorTimeout;
-    
-        formData.append("profile-img", file);
+            const uploadBtn = document.getElementById("uploadBtn");
+            const editBtn = document.getElementById("editBtn");
 
-        // Show loader and disable button
-        loader.style.display = "block";
-        uploadBtn.disabled = true;
+            let errorTimeout;
+        
+            formData.append("profile-img", file);
 
-    
-        try {
-            if (container) {
-                container.style.display = "none";
+            // Show loader and disable button
+            loader.style.display = "block";
+            uploadBtn.disabled = true;
+
+        
+            try {
+                if (container) {
+                    container.style.display = "none";
+                }
+        
+                const response = await axios.post("/upload-picture", formData, {
+                    headers: { "Content-Type": "multipart/form-data" }
+                });
+                
+                // Update the profile picture dynamically
+                document.getElementById("profile-img").src = response.data.profilePicture;
+                uploadBtn.style.display = "none";
+                editBtn.style.display = "block";
+                
+            } catch (error) {
+                console.error(error);
+
+                fileError.style.display = "block";
+
+                // Clear any previous Timeout
+                clearTimeout(errorTimeout);
+
+                // Hide error message after 5 seconds
+                errorTimeout = setTimeout(() => {
+                    fileError.style.display = "none";
+                }, 5000);
+            } finally {
+                // Hide loader and enable button
+                loader.style.display = "none";
+                uploadBtn.disabled = false;
             }
-    
-            const response = await axios.post("/upload-picture", formData, {
-                headers: { "Content-Type": "multipart/form-data" }
-            });
-            
-            // Update the profile picture dynamically
-            document.getElementById("profile-img").src = response.data.profilePicture;
-            uploadBtn.style.display = "none";
-            editBtn.style.display = "block";
-            
-        } catch (error) {
-            console.error(error);
-
-            fileError.style.display = "block";
-
-            // Clear any previous Timeout
-            clearTimeout(errorTimeout);
-
-            // Hide error message after 5 seconds
-            errorTimeout = setTimeout(() => {
-                fileError.style.display = "none";
-            }, 5000);
-        } finally {
-            // Hide loader and enable button
-            loader.style.display = "none";
-            uploadBtn.disabled = false;
-        }
-    });
+        });
+    }
 
     // Trigger image file picker
-    document.getElementById("changeBtn").addEventListener("click", () => {
-        const fileInput = document.getElementById("file-input");
+    const changeButton = document.getElementById("changeBtn");
 
-        fileInput.click();
-    });
+    if (changeButton) {
+        changeButton.addEventListener("click", () => {
+            const fileInput = document.getElementById("file-input");
+
+            fileInput.click();
+        });
+    }
 
     //Dynamically remove profile picture without page reload
-    document.getElementById("pic-delete-form").addEventListener("submit", async (e) => {
-        e.preventDefault(); // Prevent page reload
+    const picDelete = document.getElementById("pic-delete-form");
 
-        const container = document.querySelector(".buttons-container");
-        const uploadBtn = document.getElementById("uploadBtn");
-        const editBtn = document.getElementById("editBtn");
-        const loader = document.getElementById("loader");
+    if (picDelete) {
+        picDelete.addEventListener("submit", async (e) => {
+            e.preventDefault(); // Prevent page reload
 
-        // Show loader and disable button
-        loader.style.display = "block";
+            const container = document.querySelector(".buttons-container");
+            const uploadBtn = document.getElementById("uploadBtn");
+            const editBtn = document.getElementById("editBtn");
+            const loader = document.getElementById("loader");
 
-    
-        try {
+            // Show loader and disable button
+            loader.style.display = "block";
 
-            await axios.post("/pic-delete");
+        
+            try {
 
-            document.getElementById("profile-img").src = '/uploads/default.png';
+                await axios.post("/pic-delete");
 
-            container.style.display = "none";
+                document.getElementById("profile-img").src = '/uploads/default.png';
 
-            uploadBtn.style.display = "block";
-            editBtn.style.display = "none";
-        } catch (error) {
-            console.error(error);
-            alert("Failed to remove profile picture.");
-        } finally {
-            // Hide loader and enable button
-            loader.style.display = "none";
-            editBtn.disabled = false;
-        }
-    });
+                container.style.display = "none";
+
+                uploadBtn.style.display = "block";
+                editBtn.style.display = "none";
+            } catch (error) {
+                console.error(error);
+                alert("Failed to remove profile picture.");
+            } finally {
+                // Hide loader and enable button
+                loader.style.display = "none";
+                editBtn.disabled = false;
+            }
+        });
+    }
 });
 
 
@@ -206,13 +232,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Drop Down Menu functionalities
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("accountDropdown").addEventListener("click", () => {
-        const dropMenu = document.querySelector(".drop-outer");
-        const menuArrow = document.getElementById("menu-arrow");
+    const accountDropdown = document.getElementById("accountDropdown");
 
-        dropMenu.classList.toggle("show");
-        menuArrow.classList.toggle("bxs-up-arrow");
-    });
+    if (accountDropdown) {
+        accountDropdown.addEventListener("click", () => {
+            const dropMenu = document.querySelector(".drop-outer");
+            const menuArrow = document.getElementById("menu-arrow");
+
+            dropMenu.classList.toggle("show");
+            menuArrow.classList.toggle("bxs-up-arrow");
+        });
+    }
 
 
     document.addEventListener("mousedown", (event) => {
@@ -220,9 +250,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const dropMenu = document.querySelector(".drop-outer");
         const menuArrow = document.getElementById("menu-arrow");
 
-        if (!dropMenu.contains(event.target) && !account.contains(event.target)) {
-            dropMenu.classList.remove("show");
-            menuArrow.classList.remove("bxs-up-arrow");
+        if (dropMenu) {
+            if (!dropMenu.contains(event.target) && !account.contains(event.target)) {
+                dropMenu.classList.remove("show");
+                menuArrow.classList.remove("bxs-up-arrow");
+            }
         }
     });
 });
@@ -230,76 +262,96 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Display Loader when logging in.
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("log-form").addEventListener("submit", () => {
+    const logForm = document.getElementById("log-form");
+
+    if (logForm) {
+        logForm.addEventListener("submit", () => {
     
-        const loader = document.getElementById("loader");
-        const loginBtn = document.querySelector(".log-btn");
+            const loader = document.getElementById("loader");
+            const loginBtn = document.querySelector(".log-btn");
 
 
-        //Show loader and disable delete button
-        loader.style.display = "block";
-        loginBtn.disabled = true;
-    });
+            //Show loader and disable delete button
+            loader.style.display = "block";
+            loginBtn.disabled = true;
+        });
+    }
 });
 
 
 // Display Loader when registering.
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("reg-form").addEventListener("submit", () => {
+    const regForm = document.getElementById("reg-form");
+
+    if (regForm) {
+        regForm.addEventListener("submit", () => {
     
-        const loader = document.getElementById("loader");
-        const regBtn = document.getElementById("regBtn");
+            const loader = document.getElementById("loader");
+            const regBtn = document.getElementById("regBtn");
 
 
-        //Show loader and disable delete button
-        loader.style.display = "block";
-        regBtn.disabled = true;
-    });
+            //Show loader and disable delete button
+            loader.style.display = "block";
+            regBtn.disabled = true;
+        });
+    }
 });
 
 
 // Display Loader when deleting account
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("delete-form").addEventListener("submit", () => {
+    const deleteForm = document.getElementById("delete-form");
+
+    if (deleteForm) {
+        deleteForm.addEventListener("submit", () => {
     
-        const loader = document.getElementById("loader");
-        const delBtn = document.getElementById("delete");
+            const loader = document.getElementById("loader");
+            const delBtn = document.getElementById("delete");
 
 
-        //Show loader and disable delete button
-        loader.style.display = "block";
-        delBtn.disabled = true;
-    });
+            //Show loader and disable delete button
+            loader.style.display = "block";
+            delBtn.disabled = true;
+        });
+    }
 });
 
 
 // Display Loader when changing password
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("change-form").addEventListener("submit", () => {
+    const changeForm = document.getElementById("change-form");
+
+    if (changeForm) {
+        changeForm.addEventListener("submit", () => {
     
-        const loader = document.getElementById("loader");
-        const changeBtn = document.getElementById("changeBtn");
+            const loader = document.getElementById("loader");
+            const changeBtn = document.getElementById("changeBtn");
 
 
-        //Show loader and disable delete button
-        loader.style.display = "block";
-        changeBtn.disabled = true;
-    });
+            //Show loader and disable delete button
+            loader.style.display = "block";
+            changeBtn.disabled = true;
+        });
+    }
 });
 
 
 // Display Loader when resetting password
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("reset-form").addEventListener("submit", () => {
+    const resetForm = document.getElementById("reset-form");
+
+    if (resetForm) {
+        resetForm.addEventListener("submit", () => {
     
-        const loader = document.getElementById("loader");
-        const changeBtn = document.getElementById("resetBtn");
+            const loader = document.getElementById("loader");
+            const changeBtn = document.getElementById("resetBtn");
 
 
-        //Show loader and disable delete button
-        loader.style.display = "block";
-        changeBtn.disabled = true;
-    });
+            //Show loader and disable delete button
+            loader.style.display = "block";
+            changeBtn.disabled = true;
+        });
+    }
 });
 
 
@@ -340,10 +392,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const overlay = document.querySelector(".overlay");
 
 
-        if (!bioCon.contains(event.target) && !bioForm.contains(event.target)) {
-            bioForm.style.display = "none";
-            document.body.style.overflow = "auto";
-            overlay.classList.remove("backdrop");
+        if (bioCon) {
+            if (!bioCon.contains(event.target) && !bioForm.contains(event.target)) {
+                bioForm.style.display = "none";
+                document.body.style.overflow = "auto";
+                overlay.classList.remove("backdrop");
+            }
         }
     });
 });
@@ -351,7 +405,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Auto detect users time zone
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById('timeZone').value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const timeZone = document.getElementById('timeZone');
+
+    if (timeZone) {
+        timeZone.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    }
 });
 
 
@@ -646,13 +704,17 @@ document.addEventListener("DOMContentLoaded", () => {
 const cancelButton = document.getElementById("cancel");
 const bioButton = document.getElementById("bio-close");
 
-cancelButton.addEventListener("click", (event) => {
-    event.preventDefault();
-});
+if (cancelButton) {
+    cancelButton.addEventListener("click", (event) => {
+        event.preventDefault();
+    });
+}
 
-bioButton.addEventListener("click", (event) => {
-    event.preventDefault();
-});
+if (bioButton) {
+    bioButton.addEventListener("click", (event) => {
+        event.preventDefault();
+    });
+}
 
             
 
