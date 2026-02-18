@@ -24,9 +24,11 @@
                     toggleButton.classList.remove("bx-toggle-left");
                     toggleButton.classList.add("bx-toggle-right");            
                 } else {
-                    document.documentElement.setAttribute("data-theme", themeMode); // Set theme attribute
-                    toggleButton.classList.remove("bx-toggle-right");
-                    toggleButton.classList.add("bx-toggle-left");
+                    if (toggleButton) {
+                        document.documentElement.setAttribute("data-theme", themeMode); // Set theme attribute
+                        toggleButton.classList.remove("bx-toggle-right");
+                        toggleButton.classList.add("bx-toggle-left");
+                    }
                 }
             }
         </script>
