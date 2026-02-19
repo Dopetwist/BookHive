@@ -21,8 +21,10 @@
                  
                 if (themeMode === "dark") {
                     document.documentElement.setAttribute("data-theme", themeMode); // Set theme attribute
-                    toggleButton.classList.remove("bx-toggle-left");
-                    toggleButton.classList.add("bx-toggle-right");            
+                    if (toggleButton) {
+                        toggleButton.classList.remove("bx-toggle-left");
+                        toggleButton.classList.add("bx-toggle-right");  
+                    }          
                 } else {
                     if (toggleButton) {
                         document.documentElement.setAttribute("data-theme", themeMode); // Set theme attribute

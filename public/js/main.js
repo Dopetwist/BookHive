@@ -47,18 +47,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const overlay = document.getElementById("newBackdrop");
 
 
-    menu.addEventListener("click", () => {
-        menu.classList.toggle("bx-x");
-        sideBar.classList.toggle("active");
-        overlay.classList.toggle("alive");
-    });
+    if (menu) {
+        menu.addEventListener("click", () => {
+            menu.classList.toggle("bx-x");
+            sideBar.classList.toggle("active");
+            overlay.classList.toggle("alive");
+        });
+    }
 
     // Close sidebar on outside click
-    overlay.addEventListener("click", () => {
-        menu.classList.remove("bx-x");
-        sideBar.classList.remove("active");
-        overlay.classList.remove("alive");
-    });
+    if (overlay) {
+        overlay.addEventListener("click", () => {
+            menu.classList.remove("bx-x");
+            sideBar.classList.remove("active");
+            overlay.classList.remove("alive");
+        });
+    }
 });
 
 // Trigger image file picker
@@ -189,43 +193,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Send Feedbacks
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector("#feedback-form").addEventListener("submit", async (e) => {
-        e.preventDefault(); // Prevent page reload
+    const feedbackForm = document.querySelector("#feedback-form");
 
-        const name = document.querySelector("#uName").value;
-        const email = document.querySelector("#uEmail").value;
-        const message = document.querySelector("#message").value;
-        const feedbackMessage = document.getElementById("feedbackMessage");
-        const feedBtn = document.getElementById("feedBtn");
-        const loader = document.getElementById("loader");
+    if (feedbackForm) {
+        feedbackForm.addEventListener("submit", async (e) => {
+            e.preventDefault(); // Prevent page reload
 
-        loader.style.display = "block";
-        feedBtn.disabled = true;
+            const name = document.querySelector("#uName").value;
+            const email = document.querySelector("#uEmail").value;
+            const message = document.querySelector("#message").value;
+            const feedbackMessage = document.getElementById("feedbackMessage");
+            const feedBtn = document.getElementById("feedBtn");
+            const loader = document.getElementById("loader");
+
+            loader.style.display = "block";
+            feedBtn.disabled = true;
 
 
 
-        try {
-            await axios.post("/feedback/send-feedback", { name, email, message });
-            feedbackMessage.textContent = "Feedback sent successfully! ✅"; // Show success message
-            feedbackMessage.style.color = "green";
-            setTimeout(() => {
-                feedbackMessage.textContent = "";
-            }, 3000);
-        } catch (error) {
-            feedbackMessage.textContent = "Failed to send feedback. Try again.";
-            feedbackMessage.style.color = "red";
-            console.error("Failed to send feedback:", error);
-            setTimeout(() => {
-                feedbackMessage.textContent = "";
-            }, 3000);
-        } finally {
-            loader.style.display = "none";
-            feedBtn.disabled = false;
-        }
+            try {
+                await axios.post("/feedback/send-feedback", { name, email, message });
+                feedbackMessage.textContent = "Feedback sent successfully! ✅"; // Show success message
+                feedbackMessage.style.color = "green";
+                setTimeout(() => {
+                    feedbackMessage.textContent = "";
+                }, 3000);
+            } catch (error) {
+                feedbackMessage.textContent = "Failed to send feedback. Try again.";
+                feedbackMessage.style.color = "red";
+                console.error("Failed to send feedback:", error);
+                setTimeout(() => {
+                    feedbackMessage.textContent = "";
+                }, 3000);
+            } finally {
+                loader.style.display = "none";
+                feedBtn.disabled = false;
+            }
 
-        // Optionally, clear the form
-        document.querySelector("#feedback-form").reset();
-    });
+            // Optionally, clear the form
+            feedbackForm.reset();
+        });
+    }
 });
 
 
@@ -363,8 +371,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const searchInput = document.getElementById("search");
 
         // Check if the clicked element is NOT inside the search result div or the search input
-        if (!searchResults.contains(event.target) && !searchInput.contains(event.target)) {
-            searchResults.classList.remove("live");
+        if (searchResults) {
+            if (!searchResults.contains(event.target) && !searchInput.contains(event.target)) {
+                searchResults.classList.remove("live");
+            }
         }
     });
     
@@ -377,11 +387,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const feedbackMessage = document.querySelector("#feedbackMessage");
 
 
-        if (!feedbackCon.contains(event.target) && !feedbackForm.contains(event.target)) {
-            feedbackForm.style.display = "none";
-            overlay.classList.remove("backdrop");
-            feedbackMessage.textContent = "";
-            feedbackForm.reset();
+        if (feedbackCon) {
+            if (!feedbackCon.contains(event.target) && !feedbackForm.contains(event.target)) {
+                feedbackForm.style.display = "none";
+                overlay.classList.remove("backdrop");
+                feedbackMessage.textContent = "";
+                feedbackForm.reset();
+            }
         }
     });
 
@@ -417,18 +429,21 @@ document.addEventListener("DOMContentLoaded", () => {
 //Convert UTC timestamp to each user's local time zone
 function updateTimestamps () {
     const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const timeStamp = document.querySelectorAll(".timestamp");
 
-    document.querySelectorAll(".timestamp").forEach(element => {
-        const utcDate = new Date(element.dataset.utc);
-        const options = { timeZone: userTimeZone, hour12: true };
+    if (timeStamp) {
+        timeStamp.forEach(element => {
+            const utcDate = new Date(element.dataset.utc);
+            const options = { timeZone: userTimeZone, hour12: true };
 
-        const year = utcDate.toLocaleString('en-US', { year: 'numeric', ...options });
-        const month = utcDate.toLocaleString('en-US', { month: '2-digit', ...options });
-        const day = utcDate.toLocaleString('en-US', { day: '2-digit', ...options });
-        const time = utcDate.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', ...options });
+            const year = utcDate.toLocaleString('en-US', { year: 'numeric', ...options });
+            const month = utcDate.toLocaleString('en-US', { month: '2-digit', ...options });
+            const day = utcDate.toLocaleString('en-US', { day: '2-digit', ...options });
+            const time = utcDate.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', ...options });
 
-        element.innerHTML = `<strong class="strong">Posted on:</strong> ${year}/${month}/${day}, ${time}`;
-    });
+            element.innerHTML = `<strong class="strong">Posted on:</strong> ${year}/${month}/${day}, ${time}`;
+        });
+    }
 }
 
 
@@ -502,21 +517,25 @@ function themeEffect () {
 
 document.addEventListener("DOMContentLoaded", async () => {
     // Toggle button
-    toggleButton.addEventListener("click", async () => {
-        if (!isHamburgerVisible()) {
-            themeEffect();
-        }
-    });
+    if (toggleButton) {
+        toggleButton.addEventListener("click", async () => {
+            if (!isHamburgerVisible()) {
+                themeEffect();
+            }
+        });
+    }
 });
 
 
 document.addEventListener("DOMContentLoaded", async () => {
     // New Toggle button
-    newToggleButton.addEventListener("click", async () => {
-        if (isHamburgerVisible()) {
-            themeEffect();
-        }
-    });
+    if (newToggleButton) {
+        newToggleButton.addEventListener("click", async () => {
+            if (isHamburgerVisible()) {
+                themeEffect();
+            }
+        });
+    }
 });
 
 
@@ -527,9 +546,11 @@ const button = document.getElementById("back-to-top");
 
 window.onscroll = function() { scrollFunction() };
 
-button.addEventListener("click", () => {
-    topButton();
-});
+if (button) {
+    button.addEventListener("click", () => {
+        topButton();
+    });
+}
 
 
 
@@ -560,31 +581,37 @@ function feedbackDisplay() {
     form.style.display = "block";
     overlay.classList.add("backdrop");
 
-    closeBtn.addEventListener("click", () => {
-        form.style.display = "none";
-        overlay.classList.remove("backdrop");
-        feedbackMessage.textContent = "";
-        form.reset();
-    });
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            form.style.display = "none";
+            overlay.classList.remove("backdrop");
+            feedbackMessage.textContent = "";
+            form.reset();
+        });
+    }
 }
 
 
 //Feedback form displays
 document.addEventListener("DOMContentLoaded", () => {
-    feedbackButton.addEventListener("click", () => {
-        if (!isHamburgerVisible()) {
-            feedbackDisplay();
-        }
-    });
+    if (feedbackButton) {
+        feedbackButton.addEventListener("click", () => {
+            if (!isHamburgerVisible()) {
+                feedbackDisplay();
+            }
+        });
+    }
 
-    newFeedbackButton.addEventListener("click", () => {
-        if (isHamburgerVisible()) {
-            feedbackDisplay();
-            document.querySelector(".float-nav-links").classList.remove("active");
-            document.getElementById("newBackdrop").classList.remove("alive");
-            menuIcon.classList.remove("bx-x");
-        }
-    });
+    if (newFeedbackButton) {
+        newFeedbackButton.addEventListener("click", () => {
+            if (isHamburgerVisible()) {
+                feedbackDisplay();
+                document.querySelector(".float-nav-links").classList.remove("active");
+                document.getElementById("newBackdrop").classList.remove("alive");
+                menuIcon.classList.remove("bx-x");
+            }
+        });
+    }
 });
 
 
@@ -601,103 +628,111 @@ const sortedBooks = document.getElementById("sorted-books");
 
 // Prevent page reload when searching users.
 document.addEventListener("DOMContentLoaded", () => {
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // prevent page reload
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // prevent page reload
 
-        resultBox.classList.add("live");
+            resultBox.classList.add("live");
 
-        try {
-            const res = await axios.post('/search', {
-                search: input.value.trim()
-            });
+            try {
+                const res = await axios.post('/search', {
+                    search: input.value.trim()
+                });
 
-            // Replace the entire display-user content with the returned HTML
-            resultBox.innerHTML = res.data;
-        } catch (err) {
-            console.error(err);
-            resultBox.innerHTML = "<p style='color:red;'>An error occurred. Please try again.</p>";
-        }
-    });
+                // Replace the entire display-user content with the returned HTML
+                resultBox.innerHTML = res.data;
+            } catch (err) {
+                console.error(err);
+                resultBox.innerHTML = "<p style='color:red;'>An error occurred. Please try again.</p>";
+            }
+        });
+    }
 });
 
 
             
 document.addEventListener("DOMContentLoaded", () => {
     // Prevent page reload on Sort Title click
-    sortTitle.addEventListener("click", async (e) => {
-        e.preventDefault(); // prevent page reload
+    if (sortTitle) {
+        sortTitle.addEventListener("click", async (e) => {
+            e.preventDefault(); // prevent page reload
 
-        const url = sortTitle.href;
+            const url = sortTitle.href;
 
 
-        eachBook.forEach((b) => {
-            b.classList.add("disp");
+            eachBook.forEach((b) => {
+                b.classList.add("disp");
+            });
+
+            sortedBooks.classList.add("trigger");
+            // sortedBooks.innerHTML = "<p>Sorting...</p>";
+
+            try {
+                const res = await axios.get(url);
+                sortedBooks.innerHTML = res.data;
+
+                // Update timestamps
+                if (window.updateTimestamps) updateTimestamps();
+            } catch (error) {
+                console.error(error);
+                sortedBooks.innerHTML = "<p class='errorBooks'>No Books to Display!</p>";
+            } 
         });
-
-        sortedBooks.classList.add("trigger");
-        // sortedBooks.innerHTML = "<p>Sorting...</p>";
-
-        try {
-            const res = await axios.get(url);
-            sortedBooks.innerHTML = res.data;
-
-            // Update timestamps
-            if (window.updateTimestamps) updateTimestamps();
-        } catch (error) {
-            console.error(error);
-            sortedBooks.innerHTML = "<p class='errorBooks'>No Books to Display!</p>";
-        } 
-    });
+    }
 
     // Prevent page reload on Sort Recent click
-    sortRecent.addEventListener("click", async (e) => {
-        e.preventDefault(); // prevent page reload
+    if (sortRecent) {
+        sortRecent.addEventListener("click", async (e) => {
+            e.preventDefault(); // prevent page reload
 
-        const url = sortRecent.href;
+            const url = sortRecent.href;
 
-        eachBook.forEach((b) => {
-            b.classList.add("disp");
+            eachBook.forEach((b) => {
+                b.classList.add("disp");
+            });
+
+            sortedBooks.classList.add("trigger");
+            // sortedBooks.innerHTML = "<p>Sorting...</p>";
+
+            try {
+                const res = await axios.get(url);
+                sortedBooks.innerHTML = res.data;
+
+                // Update timestamps
+                if (window.updateTimestamps) updateTimestamps();
+            } catch (error) {
+                console.error(error);
+                sortedBooks.innerHTML = "<p class='errorBooks'>No Books to Display!</p>";
+            }
         });
-
-        sortedBooks.classList.add("trigger");
-        // sortedBooks.innerHTML = "<p>Sorting...</p>";
-
-        try {
-            const res = await axios.get(url);
-            sortedBooks.innerHTML = res.data;
-
-            // Update timestamps
-            if (window.updateTimestamps) updateTimestamps();
-        } catch (error) {
-            console.error(error);
-            sortedBooks.innerHTML = "<p class='errorBooks'>No Books to Display!</p>";
-        }
-    });
+    }
 
     // Prevent page reload on Sort Rating click
-    sortRating.addEventListener("click", async (e) => {
-        e.preventDefault(); // prevent page reload
+    if (sortRating) {
+        sortRating.addEventListener("click", async (e) => {
+            e.preventDefault(); // prevent page reload
 
-        const url = sortRating.href;
+            const url = sortRating.href;
 
-        eachBook.forEach((b) => {
-            b.classList.add("disp");
+            eachBook.forEach((b) => {
+                b.classList.add("disp");
+            });
+
+            sortedBooks.classList.add("trigger");
+            // sortedBooks.innerHTML = "<p>Sorting...</p>";
+
+            try {
+                const res = await axios.get(url);
+                sortedBooks.innerHTML = res.data;
+
+                // Update timestamps
+                if (window.updateTimestamps) updateTimestamps();
+            } catch (error) {
+                console.error(error);
+                sortedBooks.innerHTML = "<p class='errorBooks'>No Books to Display!</p>";
+            }
         });
-
-        sortedBooks.classList.add("trigger");
-        // sortedBooks.innerHTML = "<p>Sorting...</p>";
-
-        try {
-            const res = await axios.get(url);
-            sortedBooks.innerHTML = res.data;
-
-            // Update timestamps
-            if (window.updateTimestamps) updateTimestamps();
-        } catch (error) {
-            console.error(error);
-            sortedBooks.innerHTML = "<p class='errorBooks'>No Books to Display!</p>";
-        }
-    });
+    }
 });
 
 // Prevent Page reload on click
