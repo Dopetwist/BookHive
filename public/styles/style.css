@@ -1760,6 +1760,20 @@ footer {
         font-size: 1.3rem;
     }
 
+    .buttons-inner-con {
+        width: 90%;
+        padding: 2rem 1rem 1rem 1rem;
+    }
+
+    .buttons-inner-con p {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .picture-btns {
+        width: 60%;
+    }
+
     .float-item p, .float-item #feedbackBtn, .user-name p {
         font-size: 0.9rem;
     }
@@ -2066,10 +2080,6 @@ footer {
         font-size: 0.7rem;
     }
 
-    .picture-btns {
-        margin-bottom: 2rem;
-    }
-
     .cover-container {
         flex-direction: column-reverse;
     }
@@ -2218,6 +2228,19 @@ footer {
 
     .buttons {
         width: 60%;
+    }
+
+    .buttons-inner-con {
+        width: 80%;
+    }
+
+    .buttons-inner-con p {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .picture-btns {
+        width: 50%;
     }
 
     .home-btns {
@@ -2564,10 +2587,6 @@ footer {
         font-size: 0.7rem;
     }
 
-    .picture-btns {
-        margin-bottom: 2rem;
-    }
-
     .cover-container {
         flex-direction: column-reverse;
     }
@@ -2705,6 +2724,18 @@ footer {
         width: 2rem;
         height: 2rem;
         margin-bottom: 0.2rem;
+    }
+
+    .buttons-inner-con {
+        width: 60%;
+    }
+
+    .buttons-inner-con p {
+        font-size: 1rem;
+    }
+
+    .picture-btns {
+        width: 50%;
     }
 
     .toggle p {
