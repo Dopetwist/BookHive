@@ -2080,10 +2080,6 @@ footer {
         font-size: 0.7rem;
     }
 
-    /* .picture-btns {
-        margin-bottom: 2rem;
-    } */
-
     .cover-container {
         flex-direction: column-reverse;
     }
@@ -2590,10 +2586,6 @@ footer {
     #changeBtn, #uploadBtn {
         font-size: 0.7rem;
     }
-
-    /* .picture-btns {
-        margin-bottom: 2rem;
-    } */
 
     .cover-container {
         flex-direction: column-reverse;
