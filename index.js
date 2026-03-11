@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import pg from "pg";
+/* import pg from "pg"; */
 import env from "dotenv";
 import bcrypt from "bcrypt";
 import session from "express-session";
@@ -11,7 +11,7 @@ import multer from "multer";
 import path from "path";
 import feedbackRoutes from './routes/feedback.js';
 import { fileURLToPath } from "url";
-import pool from "./db/connection.js";
+import pkg from "pg";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,6 +21,8 @@ const app = express();
 const port = 3000;
 
 const saltRounds = 10;
+
+const { Pool } = pkg;
 
 
 // User profile picture upload handler
@@ -74,7 +76,7 @@ app.use((req, res, next) => {
 
 
 // Database Connection
-const db = new pg.Client({
+/* const db = new pg.Client({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
   database: process.env.DB_NAME,
@@ -82,7 +84,15 @@ const db = new pg.Client({
   port: process.env.DB_PORT
 });
 
-db.connect();
+db.connect(); */
+
+// Database Connection
+const db = new Pool({
+  connectionString: process.env.DATABASE_URL || "postgres://postgres:J20161978583A...@localhost:5432/paperback",
+  ssl: process.env.NODE_ENV === "production"
+    ? { rejectUnauthorized: false }
+    : false
+});
 
 let books = [];
 
