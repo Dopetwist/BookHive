@@ -1,6 +1,5 @@
 import express from "express";
 import bodyParser from "body-parser";
-/* import pg from "pg"; */
 import env from "dotenv";
 import bcrypt from "bcrypt";
 import session from "express-session";
@@ -18,7 +17,7 @@ const __dirname = path.dirname(__filename);
 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const saltRounds = 10;
 
@@ -74,17 +73,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-// Database Connection
-/* const db = new pg.Client({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT
-});
-
-db.connect(); */
 
 // Database Connection
 const db = new Pool({
@@ -1556,33 +1544,3 @@ app.get("/delete/:source_table/:id", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}.`);
 });
-
-
-// function isValidDate (dateString) {
-//   const [year, month, day] = dateString.split('/').map(Number);
-//   const date = new Date(year, month - 1, day);
-
-//   return (
-//       date.getFullYear() === year &&
-//       date.getMonth() + 1 === month &&
-//       date.getDate() === day
-//   );
-// }
-
-// function validateDate() {
-//   const dateInput = document.getElementById('dateInput').value;
-//   const errorMessage = document.getElementById('errorMessage');
-
-//   const datePattern = /^\d{4}\/(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])$/;
-
-//   if (!datePattern.test(dateInput)) {
-//       errorMessage.textContent = "Please enter a valid date in the required format!";
-//       return false;
-//   } else if (!isValidDate(dateInput)) {
-//       errorMessage.textContent = "Please enter a valid Calender date!";
-//       return false;
-//   } else {
-//       errorMessage.textContent = "";
-//       return true;
-//   }
-// }
