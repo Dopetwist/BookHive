@@ -11,6 +11,7 @@ import multer from "multer";
 import path from "path";
 import feedbackRoutes from './routes/feedback.js';
 import { fileURLToPath } from "url";
+import pool from "./db/connection.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,12 +46,14 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24  // A day session before expiration
     }
   })
 );
+
+app.set("trust proxy", 1); // Helps sessions work correctly behind proxies like Render
 
 app.use(bodyParser.json()); // Middleware to parse JSON data (E.g, For feedback emails)
 app.use(bodyParser.urlencoded({extended: true}));
