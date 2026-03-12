@@ -18,7 +18,8 @@ While building this project, i gained deep understanding on various concepts and
 ✅ Search Feature - Adequately search for registered users to explore profiles and books.  
 ✅ Dark Mode/Light Mode - Users theme preferences are appropriately stored and persisted.  
 ✅ Feedback Feature - Feedbacks or requests can be sent effortlessly.  
-✅ Sorting of Books by Title, Recency and Rating.
+✅ Sorting of Books by Title, Recency and Rating.  
+✅ Cloudinary integration for profile picture uploads.
 
 
 ## 🛠️ Tech Stack used 
