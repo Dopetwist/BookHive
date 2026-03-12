@@ -11,9 +11,12 @@ import path from "path";
 import feedbackRoutes from './routes/feedback.js';
 import { fileURLToPath } from "url";
 import pkg from "pg";
+import { v2 as cloudinary } from "cloudinary";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
+/* const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename); */
 
 
 const app = express();
@@ -24,20 +27,43 @@ const saltRounds = 10;
 const { Pool } = pkg;
 
 
+// Media(images) cloud storage
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+
 // User profile picture upload handler
-const storage = multer.diskStorage({
+/* const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/uploads/"); // Save files in public/uploads folder
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
   }
-});
+}); */
 
-const upload = multer({ 
+/* const upload = multer({ 
   storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+}); */
+
+
+// User profile picture upload handler
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "booknotes_profiles",
+    allowed_formats: ["jpg", "png", "jpeg"],
+    transformation: [
+      { width: 300, height: 300, crop: "fill" }
+    ],
+  },
 });
+
+const upload = multer({ storage });
 
 env.config();
 
@@ -59,7 +85,7 @@ app.set("trust proxy", 1); // Helps sessions work correctly behind proxies like 
 app.use(bodyParser.json()); // Middleware to parse JSON data (E.g, For feedback emails)
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+/* app.use("/uploads", express.static(path.join(__dirname, "uploads"))); */
 
 
 app.use(flash()); // Enable flash messages
@@ -850,7 +876,8 @@ app.post("/upload-picture", upload.single("profile-img"), async (req, res) => {
     if (!req.file) return res.status(400).json({ error: "No file uploaded" });
   
     const userId = req.user.id;
-    const profilePicture = `/uploads/${req.file.filename}`;
+    /* const profilePicture = `/uploads/${req.file.filename}`; */
+    const profilePicture = req.file.path; // Cloudinary URL
     
   
     try {
