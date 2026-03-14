@@ -7,17 +7,13 @@ import flash from "connect-flash";
 import passport from "passport";
 import { Strategy } from "passport-local"; 
 import multer from "multer";
-import path from "path";
 import feedbackRoutes from './routes/feedback.js';
-import { fileURLToPath } from "url";
 import pkg from "pg";
 import { v2 as cloudinary } from "cloudinary";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 
 
-/* const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename); */
-
+env.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -36,22 +32,6 @@ cloudinary.config({
 
 
 // User profile picture upload handler
-/* const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/uploads/"); // Save files in public/uploads folder
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
-  }
-}); */
-
-/* const upload = multer({ 
-  storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
-}); */
-
-
-// User profile picture upload handler
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
@@ -64,8 +44,6 @@ const storage = new CloudinaryStorage({
 });
 
 const upload = multer({ storage });
-
-env.config();
 
 
 // Note: Lookup how to persist the session by pairing and saving to Postgres before deployment
@@ -85,7 +63,6 @@ app.set("trust proxy", 1); // Helps sessions work correctly behind proxies like 
 app.use(bodyParser.json()); // Middleware to parse JSON data (E.g, For feedback emails)
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-/* app.use("/uploads", express.static(path.join(__dirname, "uploads"))); */
 
 
 app.use(flash()); // Enable flash messages
