@@ -36,8 +36,12 @@
                 
                 
                             <div class="buttons">
-                                <a href="/edit/<%= source_table %>/<%= item[0].id %>" class="edit-btn btnn" role="button">Edit Book</a>
-                                <a href="/delete/<%= source_table %>/<%= item[0].id %>" class="btnn" role="button">Delete Book</a>
+                                <a href="/edit/<%= source_table %>/<%= item[0].id %>" class="edit-btn btnn">
+                                    <button>Edit Book</button>
+                                </a>
+                                <a href="/delete/<%= source_table %>/<%= item[0].id %>" class="delete-btn btnn">
+                                    <button>Delete Book</button>
+                                </a>
                             </div>
                         </div>
                     </div>
