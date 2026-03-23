@@ -207,7 +207,6 @@ main#reg-main {
 }
 
 .explanation {
-    color: #555;
     margin-top: 1rem;
     text-align: center;
 }
@@ -368,8 +367,13 @@ p, a, button {
 }
 
 #welcome {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
+    font-weight: 600;
     font-family: "Poppins", serif;
+}
+
+#welcome span {
+    color: #008080;
 }
 
 #my-account {
@@ -1105,11 +1109,6 @@ a.delete-btn {
     margin-bottom: 3rem;
 }
 
-.join-text,
-.dis-p {
-    color: #555;
-}
-
 .close {
     position: absolute;
     top: 4%;
@@ -1789,8 +1788,8 @@ footer {
     }
 
     #welcome {
-        font-size: 1.2rem;
-        margin-bottom: 3rem;
+        font-size: 1.5rem;
+        margin-bottom: 2.5rem;
     }
 
     .explanation, .join-text {
