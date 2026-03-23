@@ -218,6 +218,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => {
                     feedbackMessage.textContent = "";
                 }, 3000);
+
+                // Optionally, clear the form
+                feedbackForm.reset();
             } catch (error) {
                 feedbackMessage.textContent = "Failed to send feedback. Try again.";
                 feedbackMessage.style.color = "red";
@@ -229,9 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 loader.style.display = "none";
                 feedBtn.disabled = false;
             }
-
-            // Optionally, clear the form
-            feedbackForm.reset();
         });
     }
 });
