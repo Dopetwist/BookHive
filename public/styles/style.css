@@ -207,6 +207,7 @@ main#reg-main {
 }
 
 .explanation {
+    color: #555;
     margin-top: 1rem;
     text-align: center;
 }
@@ -581,6 +582,7 @@ p.add-error {
 }
 
 .visit-a {
+    width: fit-content;
     font-size: 1rem;
     display: flex;
     justify-content: flex-start;
@@ -1101,6 +1103,11 @@ a.delete-btn {
 
 #join-text {
     margin-bottom: 3rem;
+}
+
+.join-text,
+.dis-p {
+    color: #555;
 }
 
 .close {
@@ -1784,10 +1791,6 @@ footer {
     #welcome {
         font-size: 1.2rem;
         margin-bottom: 3rem;
-    }
-
-    .explanation {
-        text-align: left;
     }
 
     .explanation, .join-text {

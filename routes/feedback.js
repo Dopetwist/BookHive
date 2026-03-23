@@ -23,17 +23,22 @@ router.post('/send-feedback', async (req, res) => {
             auth: {
                 user: process.env.EMAIL_USER,  // Email address
                 pass: process.env.EMAIL_PASS   // Email password or app-specific password
-            }
+            },
+
+            connectionTimeout: 10000, // 10 seconds
         });
 
         // Email options
         const mailOptions = {
-            from: email,
+            from: email,  // Sender's email
             to: process.env.RECEIVER_EMAIL,  // Email to receive feedback
             subject: `New Feedback from BookHive`,
             text: `Name: ${name}\nEmail: ${email}\n\nMessage: \n\n${message}`
         }; 
 
+        console.log("Sending email...");
+        console.log(process.env.EMAIL_USER);
+        console.log(process.env.EMAIL_PASS);
         // Send email
         await transporter.sendMail(mailOptions);
 
