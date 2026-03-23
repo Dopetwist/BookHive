@@ -36,9 +36,6 @@ router.post('/send-feedback', async (req, res) => {
             text: `Name: ${name}\nEmail: ${email}\n\nMessage: \n\n${message}`
         }; 
 
-        console.log("Sending email...");
-        console.log(process.env.EMAIL_USER);
-        console.log(process.env.EMAIL_PASS);
         // Send email
         await transporter.sendMail(mailOptions);
 
